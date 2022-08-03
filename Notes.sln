@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notes.Web", "Notes.Web\Notes.Web.csproj", "{D12F0662-90A7-4B0E-B39A-4FEFDAD5B1A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notes.Core", "Notes.Core\Notes.Core.csproj", "{1E6CB0FB-92F0-454F-914E-706A4D0DA8CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notes.Data", "Notes.Data\Notes.Data.csproj", "{6E611900-3887-491E-AEAD-1B621778CE18}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D12F0662-90A7-4B0E-B39A-4FEFDAD5B1A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D12F0662-90A7-4B0E-B39A-4FEFDAD5B1A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D12F0662-90A7-4B0E-B39A-4FEFDAD5B1A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D12F0662-90A7-4B0E-B39A-4FEFDAD5B1A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E6CB0FB-92F0-454F-914E-706A4D0DA8CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E6CB0FB-92F0-454F-914E-706A4D0DA8CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E6CB0FB-92F0-454F-914E-706A4D0DA8CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E6CB0FB-92F0-454F-914E-706A4D0DA8CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E611900-3887-491E-AEAD-1B621778CE18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E611900-3887-491E-AEAD-1B621778CE18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E611900-3887-491E-AEAD-1B621778CE18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E611900-3887-491E-AEAD-1B621778CE18}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
