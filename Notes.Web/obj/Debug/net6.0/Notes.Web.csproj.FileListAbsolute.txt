@@ -37,3 +37,13 @@
 /Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/obj/Debug/net6.0/Notes.Web.pdb
 /Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/obj/Debug/net6.0/Notes.Web.genruntimeconfig.cache
 /Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/obj/Debug/net6.0/ref/Notes.Web.dll
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/Microsoft.Extensions.DependencyModel.dll
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/Serilog.dll
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/Serilog.AspNetCore.dll
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/Serilog.Extensions.Hosting.dll
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/Serilog.Extensions.Logging.dll
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/Serilog.Formatting.Compact.dll
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/Serilog.Settings.Configuration.dll
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/Serilog.Sinks.Console.dll
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/Serilog.Sinks.Debug.dll
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/Serilog.Sinks.File.dll
