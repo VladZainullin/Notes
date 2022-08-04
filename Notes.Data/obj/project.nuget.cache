@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "r8dSkPJ4TfOTKCHwMo4h3MEMUH5Uo+0peNibObZ5JdlGxdJRqMsEZ6xzugVcyHdAiMsyR4n6WU/dD3w6CWc5aQ==",
+  "dgSpecHash": "bDpTpR9kTI6BhntIRm7WZ9FKquqBKNrS9ds3gS8GpRsFggjLUM/aiFjCN/lxyJNFc5c2r8XPUmUpi1O05pwuUw==",
   "success": true,
   "projectFilePath": "/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Data/Notes.Data.csproj",
   "expectedPackageFiles": [
     "/Users/vadislavzainullin/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
+    "/Users/vadislavzainullin/.nuget/packages/mediatr/10.0.1/mediatr.10.0.1.nupkg.sha512",
+    "/Users/vadislavzainullin/.nuget/packages/mediatr.contracts/1.0.1/mediatr.contracts.1.0.1.nupkg.sha512",
     "/Users/vadislavzainullin/.nuget/packages/microsoft.entityframeworkcore/6.0.7/microsoft.entityframeworkcore.6.0.7.nupkg.sha512",
     "/Users/vadislavzainullin/.nuget/packages/microsoft.entityframeworkcore.abstractions/6.0.7/microsoft.entityframeworkcore.abstractions.6.0.7.nupkg.sha512",
     "/Users/vadislavzainullin/.nuget/packages/microsoft.entityframeworkcore.analyzers/6.0.7/microsoft.entityframeworkcore.analyzers.6.0.7.nupkg.sha512",

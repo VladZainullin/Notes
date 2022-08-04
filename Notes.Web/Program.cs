@@ -1,9 +1,17 @@
+using System.Reflection;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Notes.Data.Contexts;
 using Serilog;
 using Serilog.Events;
 
 var builder = WebApplication.CreateBuilder(args);
+
+#region MediatR
+
+builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+
+#endregion
 
 #region Serilog
 
