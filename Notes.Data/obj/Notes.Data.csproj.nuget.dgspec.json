@@ -1,0 +1,134 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Data/Notes.Data.csproj": {}
+  },
+  "projects": {
+    "/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Core/Notes.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Core/Notes.Core.csproj",
+        "projectName": "Notes.Core",
+        "projectPath": "/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Core/Notes.Core.csproj",
+        "packagesPath": "/Users/vadislavzainullin/.nuget/packages/",
+        "outputPath": "/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Core/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/vadislavzainullin/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.400-preview.22330.6/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Data/Notes.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Data/Notes.Data.csproj",
+        "projectName": "Notes.Data",
+        "projectPath": "/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Data/Notes.Data.csproj",
+        "packagesPath": "/Users/vadislavzainullin/.nuget/packages/",
+        "outputPath": "/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Data/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/vadislavzainullin/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Core/Notes.Core.csproj": {
+                "projectPath": "/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Core/Notes.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.7, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[6.0.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.400-preview.22330.6/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

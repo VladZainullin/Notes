@@ -1,0 +1,12 @@
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Core/bin/Debug/net6.0/Notes.Core.deps.json
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Core/bin/Debug/net6.0/Notes.Core.dll
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Core/bin/Debug/net6.0/Notes.Core.pdb
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Core/obj/Debug/net6.0/Notes.Core.csproj.AssemblyReference.cache
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Core/obj/Debug/net6.0/Notes.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Core/obj/Debug/net6.0/Notes.Core.AssemblyInfoInputs.cache
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Core/obj/Debug/net6.0/Notes.Core.AssemblyInfo.cs
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Core/obj/Debug/net6.0/Notes.Core.csproj.CoreCompileInputs.cache
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Core/obj/Debug/net6.0/Notes.Core.dll
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Core/obj/Debug/net6.0/refint/Notes.Core.dll
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Core/obj/Debug/net6.0/Notes.Core.pdb
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Core/obj/Debug/net6.0/ref/Notes.Core.dll

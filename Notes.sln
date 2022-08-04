@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notes.Core", "Notes.Core\Notes.Core.csproj", "{35E57D32-3C72-4318-ABE6-A5D0A10E39BC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notes.Data", "Notes.Data\Notes.Data.csproj", "{A217F60E-1694-4DC3-A3E1-E781ACE46F46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notes.Web", "Notes.Web\Notes.Web.csproj", "{86867CF5-054D-4C89-8310-A9F46943EC4D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{35E57D32-3C72-4318-ABE6-A5D0A10E39BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35E57D32-3C72-4318-ABE6-A5D0A10E39BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35E57D32-3C72-4318-ABE6-A5D0A10E39BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A217F60E-1694-4DC3-A3E1-E781ACE46F46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A217F60E-1694-4DC3-A3E1-E781ACE46F46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A217F60E-1694-4DC3-A3E1-E781ACE46F46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A217F60E-1694-4DC3-A3E1-E781ACE46F46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86867CF5-054D-4C89-8310-A9F46943EC4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86867CF5-054D-4C89-8310-A9F46943EC4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86867CF5-054D-4C89-8310-A9F46943EC4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86867CF5-054D-4C89-8310-A9F46943EC4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
