@@ -13,6 +13,12 @@ builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 
 #endregion
 
+#region AutoMapper
+
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+#endregion
+
 #region Serilog
 
 Log.Logger = new LoggerConfiguration()

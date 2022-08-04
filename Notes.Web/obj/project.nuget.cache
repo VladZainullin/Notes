@@ -1,13 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "Bwy7fZ1DtHp4EIV703BY1K2MUb366Davxh4fxkJ/Fj5V8GshL/14D31jxAzfcz3a2quu8p+Od8sXymjf6e+oYQ==",
+  "dgSpecHash": "+ZWZwiE1DDLfIJfOv7CYukLDjlzGUqfz1l4y7bX8zSaDBqSxrhkRRzvgoUbLl2eyktVEzaJTLqeQwsU3ARcbvw==",
   "success": true,
   "projectFilePath": "/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/Notes.Web.csproj",
   "expectedPackageFiles": [
+    "/Users/vadislavzainullin/.nuget/packages/automapper/11.0.1/automapper.11.0.1.nupkg.sha512",
+    "/Users/vadislavzainullin/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/11.0.0/automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "/Users/vadislavzainullin/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/Users/vadislavzainullin/.nuget/packages/mediatr/10.0.1/mediatr.10.0.1.nupkg.sha512",
     "/Users/vadislavzainullin/.nuget/packages/mediatr.contracts/1.0.1/mediatr.contracts.1.0.1.nupkg.sha512",
     "/Users/vadislavzainullin/.nuget/packages/mediatr.extensions.microsoft.dependencyinjection/10.0.1/mediatr.extensions.microsoft.dependencyinjection.10.0.1.nupkg.sha512",
+    "/Users/vadislavzainullin/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/vadislavzainullin/.nuget/packages/microsoft.entityframeworkcore/6.0.7/microsoft.entityframeworkcore.6.0.7.nupkg.sha512",
     "/Users/vadislavzainullin/.nuget/packages/microsoft.entityframeworkcore.abstractions/6.0.7/microsoft.entityframeworkcore.abstractions.6.0.7.nupkg.sha512",
     "/Users/vadislavzainullin/.nuget/packages/microsoft.entityframeworkcore.analyzers/6.0.7/microsoft.entityframeworkcore.analyzers.6.0.7.nupkg.sha512",
