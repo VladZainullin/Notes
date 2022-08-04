@@ -3,7 +3,7 @@ namespace Notes.Core.Entities;
 /// <summary>
 /// Ярлыка заметки
 /// </summary>
-public sealed class NoteLabels
+public sealed class NoteLabel
 {
     /// <summary>
     /// Id заметки

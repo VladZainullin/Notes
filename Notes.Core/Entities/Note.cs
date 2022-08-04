@@ -19,4 +19,9 @@ public class Note
     /// Тело заметки
     /// </summary>
     public string? Body { get; set; }
+    
+    /// <summary>
+    /// Ярлыки заметок
+    /// </summary>
+    public ICollection<NoteLabel> NoteLabels { get; set; } = new List<NoteLabel>();
 }

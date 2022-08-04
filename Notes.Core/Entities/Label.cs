@@ -14,4 +14,9 @@ public class Label
     /// Наименование ярлыка
     /// </summary>
     public string? Title { get; set; }
+
+    /// <summary>
+    /// Ярлыки заметок
+    /// </summary>
+    public ICollection<NoteLabel> NoteLabels { get; set; } = new List<NoteLabel>();
 }
