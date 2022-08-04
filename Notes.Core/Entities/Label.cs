@@ -1,0 +1,17 @@
+namespace Notes.Core.Entities;
+
+/// <summary>
+/// Ярлык
+/// </summary>
+public class Label
+{
+    /// <summary>
+    /// Id ярлыка
+    /// </summary>
+    public int Id { get; set; }
+
+    /// <summary>
+    /// Наименование ярлыка
+    /// </summary>
+    public string? Title { get; set; }
+}
