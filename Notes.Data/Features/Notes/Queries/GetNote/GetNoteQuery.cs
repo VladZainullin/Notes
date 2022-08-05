@@ -1,5 +1,4 @@
 using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Notes.Core.Entities;
@@ -21,34 +20,48 @@ internal sealed class GetNoteHandler :
     IRequestHandler<GetNoteQuery, GetNoteDto>
 {
     private readonly DbContext _context;
-    private readonly IConfigurationProvider _provider;
+    private readonly IMapper _mapper;
 
     public GetNoteHandler(
         DbContext context,
-        IConfigurationProvider provider)
+        IMapper mapper)
     {
         _context = context;
-        _provider = provider;
+        _mapper = mapper;
     }
 
     public async Task<GetNoteDto> Handle(
         GetNoteQuery request,
         CancellationToken cancellationToken)
     {
-        try
-        {
-            var note = await _context
-                .Set<Note>()
-                .AsNoTracking()
-                .Where(n => n.Id == request.NoteId)
-                .ProjectTo<GetNoteDto>(_provider)
-                .SingleAsync(cancellationToken);
-
-            return note;
-        }
-        catch (InvalidOperationException e)
-        {
+        var exists = await IsExistsNoteAsync(request.NoteId, cancellationToken);
+        if (exists)
             throw new NotFoundException("Заметка не найдена");
-        }
+
+        var note = GetNoteAsync(request.NoteId, cancellationToken);
+
+        return _mapper.Map<GetNoteDto>(note);
+    }
+
+    private async Task<bool> IsExistsNoteAsync(
+        int noteId,
+        CancellationToken cancellationToken)
+    {
+        var exists = await _context
+            .Set<Note>()
+            .AnyAsync(n => n.Id == noteId, cancellationToken);
+
+        return exists;
+    }
+
+    private async Task<Note> GetNoteAsync(
+        int noteId,
+        CancellationToken cancellationToken)
+    {
+        var note = await _context
+            .Set<Note>()
+            .SingleAsync(n => n.Id == noteId, cancellationToken);
+
+        return note;
     }
 }

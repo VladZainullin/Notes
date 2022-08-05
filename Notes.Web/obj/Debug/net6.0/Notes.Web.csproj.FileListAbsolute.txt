@@ -50,3 +50,5 @@
 /Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/MediatR.dll
 /Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/MediatR.Contracts.dll
 /Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/MediatR.Extensions.Microsoft.DependencyInjection.dll
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/AutoMapper.dll
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
