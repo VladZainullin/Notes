@@ -6,9 +6,17 @@ using Notes.Data.Features.Notes.Queries.GetNotes;
 
 namespace Notes.Web.Controllers;
 
+/// <summary>
+/// Контроллер заметок
+/// </summary>
 [Route("api/notes")]
 public sealed class NotesController : Controller
 {
+    /// <summary>
+    /// Запрос на получение всех заметок
+    /// </summary>
+    /// <param name="cancellationToken">Токен отмены запроса</param>
+    /// <returns>Заметки</returns>
     [HttpGet]
     public async Task<IActionResult> GetNotesAsync(
         [FromQuery] CancellationToken cancellationToken) =>
@@ -16,6 +24,12 @@ public sealed class NotesController : Controller
             new GetNotesQuery(),
             cancellationToken));
 
+    /// <summary>
+    /// Запрос на получение заметки по Id
+    /// </summary>
+    /// <param name="noteId">Id заметки</param>
+    /// <param name="cancellationToken">Токен отмены запроса</param>
+    /// <returns></returns>
     [HttpGet("{noteId:int}", Name = nameof(GetNoteAsync))]
     public async Task<IActionResult> GetNoteAsync(
         [FromRoute] int noteId,
@@ -24,6 +38,12 @@ public sealed class NotesController : Controller
             new GetNoteQuery(noteId),
             cancellationToken));
 
+    /// <summary>
+    /// Запрос на создание заметки
+    /// </summary>
+    /// <param name="dto">Данные новой заметки</param>
+    /// <param name="cancellationToken">Токен отмены запроса</param>
+    /// <returns></returns>
     [HttpPost]
     public async Task<IActionResult> CreateNoteAsync(
         [FromBody] CreateNoteDto dto,
@@ -43,6 +63,12 @@ public sealed class NotesController : Controller
             noteId);
     }
 
+    /// <summary>
+    /// Запрос на обновление заметки
+    /// </summary>
+    /// <param name="noteId">Id заметки</param>
+    /// <param name="cancellationToken">Токен отмены запроса</param>
+    /// <returns></returns>
     [HttpPut("{noteId:int}")]
     public async Task<IActionResult> UpdateNoteAsync(
         [FromRoute] int noteId,
@@ -55,6 +81,12 @@ public sealed class NotesController : Controller
         return NoContent();
     }
 
+    /// <summary>
+    /// Запрос на удаление заметки
+    /// </summary>
+    /// <param name="noteId">Id pfvtnrb</param>
+    /// <param name="cancellationToken">Токен отмены запроса</param>
+    /// <returns></returns>
     [HttpDelete("{noteId:int}")]
     public async Task<IActionResult> DeleteNoteAsync(
         [FromRoute] int noteId,
