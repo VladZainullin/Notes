@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 #region MediatR
 
-builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+builder.Services.AddMediatR(Assembly.Load("Notes.Data"));
 
 #endregion
 

@@ -1,6 +1,7 @@
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Notes.Core.Entities;
 
 namespace Notes.Data.Contexts;
 
@@ -13,6 +14,12 @@ public sealed class AppDbContext : DbContext
     {
         _configuration = configuration;
     }
+
+    public DbSet<Note> Notes { get; set; } = null!;
+
+    public DbSet<Label> Labels { get; set; } = null!;
+
+    public DbSet<NoteLabel> NoteLabels { get; set; } = null!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder builder)
     {
