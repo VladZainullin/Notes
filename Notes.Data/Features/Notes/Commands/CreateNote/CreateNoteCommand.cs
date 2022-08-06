@@ -11,7 +11,7 @@ public class CreateNoteCommand : IRequest<int>
     {
         CreateNoteDto = createNoteDto;
     }
-    
+
     public CreateNoteDto CreateNoteDto { get; }
 }
 
@@ -27,7 +27,7 @@ internal sealed class CreateNoteHandler : IRequestHandler<CreateNoteCommand, int
         _context = context;
         _mapper = mapper;
     }
-    
+
     public async Task<int> Handle(
         CreateNoteCommand request,
         CancellationToken cancellationToken)

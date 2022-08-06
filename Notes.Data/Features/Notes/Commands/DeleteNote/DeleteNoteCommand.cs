@@ -5,7 +5,7 @@ using Notes.Data.Exceptions;
 
 namespace Notes.Data.Features.Notes.Commands.DeleteNote;
 
-public sealed class DeleteNoteCommand : 
+public sealed class DeleteNoteCommand :
     IRequest
 {
     public DeleteNoteCommand(int noteId)
@@ -16,7 +16,7 @@ public sealed class DeleteNoteCommand :
     public int NoteId { get; }
 }
 
-internal sealed class DeleteNoteHandler : 
+internal sealed class DeleteNoteHandler :
     AsyncRequestHandler<DeleteNoteCommand>
 {
     private readonly DbContext _context;
@@ -39,7 +39,7 @@ internal sealed class DeleteNoteHandler :
         _context.Remove(note);
         await _context.SaveChangesAsync(cancellationToken);
     }
-    
+
     private async Task<bool> IsExistsNoteAsync(
         int noteId,
         CancellationToken cancellationToken)

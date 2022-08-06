@@ -9,7 +9,7 @@ public sealed class AppDbContext : DbContext
 {
     private readonly IConfiguration _configuration;
 
-    public AppDbContext(DbContextOptions<AppDbContext> options, IConfiguration configuration) : 
+    public AppDbContext(DbContextOptions<AppDbContext> options, IConfiguration configuration) :
         base(options)
     {
         _configuration = configuration;
@@ -23,18 +23,15 @@ public sealed class AppDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder builder)
     {
-        builder.UseNpgsql(_configuration.GetConnectionString("Postgres"), o =>
-        {
-            o.MigrationsAssembly("Notes.Web");
-        });
-        
+        builder.UseNpgsql(_configuration.GetConnectionString("Postgres"), o => { o.MigrationsAssembly("Notes.Web"); });
+
         base.OnConfiguring(builder);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.Load("Notes.Data"));
-        
+
         base.OnModelCreating(modelBuilder);
     }
 }

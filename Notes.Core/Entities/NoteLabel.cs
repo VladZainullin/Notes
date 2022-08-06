@@ -1,27 +1,27 @@
 namespace Notes.Core.Entities;
 
 /// <summary>
-/// Ярлыка заметки
+///     Ярлыка заметки
 /// </summary>
 public sealed class NoteLabel
 {
     /// <summary>
-    /// Id заметки
+    ///     Id заметки
     /// </summary>
     public int NoteId { get; set; }
 
     /// <summary>
-    /// Заметка
+    ///     Заметка
     /// </summary>
     public Note? Note { get; set; }
 
     /// <summary>
-    /// Id ярлыка
+    ///     Id ярлыка
     /// </summary>
     public int LabelId { get; set; }
 
     /// <summary>
-    /// Ярлык
+    ///     Ярлык
     /// </summary>
     public Label? Label { get; set; }
 }

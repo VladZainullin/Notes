@@ -10,7 +10,7 @@ public sealed record UpdateLabelCommand(
     int LabelId,
     UpdateLabelDto Dto) : IRequest;
 
-internal sealed class UpdateLabelHandler : 
+internal sealed class UpdateLabelHandler :
     AsyncRequestHandler<UpdateLabelCommand>
 {
     private readonly DbContext _context;
@@ -23,7 +23,7 @@ internal sealed class UpdateLabelHandler :
         _context = context;
         _mapper = mapper;
     }
-    
+
     protected override async Task Handle(
         UpdateLabelCommand request,
         CancellationToken cancellationToken)
@@ -33,12 +33,12 @@ internal sealed class UpdateLabelHandler :
             cancellationToken);
         if (!exists)
             throw new BadRequestException("Попытка обновления несуществующего ярлыка");
-        
+
         var label = await GetLabelAsync(
             request.LabelId,
             cancellationToken);
         _mapper.Map(request.Dto, label);
-        
+
         await _context.SaveChangesAsync(cancellationToken);
     }
 

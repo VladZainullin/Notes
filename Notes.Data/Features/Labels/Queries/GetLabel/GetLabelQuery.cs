@@ -7,7 +7,7 @@ using Notes.Data.Exceptions;
 
 namespace Notes.Data.Features.Labels.Queries.GetLabel;
 
-public sealed record GetLabelQuery : 
+public sealed record GetLabelQuery :
     IRequest<GetLabelDto>
 {
     public GetLabelQuery(int labelId)
@@ -18,7 +18,7 @@ public sealed record GetLabelQuery :
     public int LabelId { get; }
 }
 
-internal sealed class GetLabelHandler : 
+internal sealed class GetLabelHandler :
     IRequestHandler<GetLabelQuery, GetLabelDto>
 {
     private readonly DbContext _context;
@@ -31,7 +31,7 @@ internal sealed class GetLabelHandler :
         _context = context;
         _provider = provider;
     }
-    
+
     public async Task<GetLabelDto> Handle(
         GetLabelQuery request,
         CancellationToken cancellationToken)
@@ -60,7 +60,7 @@ internal sealed class GetLabelHandler :
 
         return exists;
     }
-    
+
     private async Task<GetLabelDto> GetDtoAsync(
         int labelId,
         CancellationToken cancellationToken)

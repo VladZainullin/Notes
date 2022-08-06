@@ -8,7 +8,6 @@ namespace Notes.Data.Features.Notes.Queries.GetNotes;
 
 public sealed class GetNotesQuery : IRequest<IEnumerable<GetNotesDto>>
 {
-    
 }
 
 internal sealed class GetNotesHandler :
@@ -24,7 +23,7 @@ internal sealed class GetNotesHandler :
         _context = context;
         _provider = provider;
     }
-    
+
     public async Task<IEnumerable<GetNotesDto>> Handle(
         GetNotesQuery request,
         CancellationToken cancellationToken)

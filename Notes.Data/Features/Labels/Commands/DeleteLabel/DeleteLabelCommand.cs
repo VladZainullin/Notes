@@ -15,7 +15,7 @@ internal sealed class DeleteLabelHandler : AsyncRequestHandler<DeleteLabelComman
     {
         _context = context;
     }
-    
+
     protected override async Task Handle(
         DeleteLabelCommand request,
         CancellationToken cancellationToken)
@@ -25,15 +25,15 @@ internal sealed class DeleteLabelHandler : AsyncRequestHandler<DeleteLabelComman
             cancellationToken);
         if (!exists)
             throw new BadRequestException("Попытка удаления несуществующего ярлыка");
-        
+
         var label = await GetLabelAsync(
             request.LabelId,
             cancellationToken);
         _context.Remove(label);
-        
+
         await _context.SaveChangesAsync(cancellationToken);
     }
-    
+
     private async Task<bool> IsExistsLabelAsync(
         int labelId,
         CancellationToken cancellationToken)

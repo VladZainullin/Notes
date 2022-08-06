@@ -19,7 +19,7 @@ internal sealed class CreateLabelHandler : IRequestHandler<CreateLabelCommand, i
         _context = context;
         _mapper = mapper;
     }
-    
+
     public async Task<int> Handle(
         CreateLabelCommand request,
         CancellationToken cancellationToken)

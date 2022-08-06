@@ -6,13 +6,12 @@ using Notes.Core.Entities;
 
 namespace Notes.Data.Features.Labels.Queries.GetLabels;
 
-public sealed record GetLabelsQuery : 
+public sealed record GetLabelsQuery :
     IRequest<IEnumerable<GetLabelsDto>>
 {
-    
 }
 
-internal sealed class GetLabelHandler : 
+internal sealed class GetLabelHandler :
     IRequestHandler<GetLabelsQuery, IEnumerable<GetLabelsDto>>
 {
     private readonly DbContext _context;
@@ -25,7 +24,7 @@ internal sealed class GetLabelHandler :
         _context = context;
         _provider = provider;
     }
-    
+
     public async Task<IEnumerable<GetLabelsDto>> Handle(
         GetLabelsQuery request,
         CancellationToken cancellationToken)

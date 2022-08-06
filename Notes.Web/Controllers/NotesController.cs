@@ -51,7 +51,7 @@ public sealed class NotesController : Controller
     {
         var noteId = await Mediator.Send(
             new CreateNoteCommand(dto),
-                cancellationToken);
+            cancellationToken);
 
         // ReSharper disable once Mvc.ActionNotResolved
         return CreatedAtAction(
@@ -59,7 +59,7 @@ public sealed class NotesController : Controller
             new
             {
                 noteId
-            }, 
+            },
             noteId);
     }
 

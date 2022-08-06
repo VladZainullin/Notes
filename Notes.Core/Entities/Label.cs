@@ -1,22 +1,22 @@
 namespace Notes.Core.Entities;
 
 /// <summary>
-/// Ярлык
+///     Ярлык
 /// </summary>
 public class Label
 {
     /// <summary>
-    /// Id ярлыка
+    ///     Id ярлыка
     /// </summary>
     public int Id { get; set; }
 
     /// <summary>
-    /// Наименование ярлыка
+    ///     Наименование ярлыка
     /// </summary>
     public string? Title { get; set; }
 
     /// <summary>
-    /// Ярлыки заметок
+    ///     Ярлыки заметок
     /// </summary>
     public ICollection<NoteLabel> NoteLabels { get; set; } = new List<NoteLabel>();
 }

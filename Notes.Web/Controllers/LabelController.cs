@@ -38,7 +38,7 @@ public sealed class LabelController : Controller
     {
         return Ok(await Mediator.Send(new GetLabelQuery(labelId), cancellationToken));
     }
-    
+
     /// <summary>
     /// Запрос на создание ярлыка
     /// </summary>
@@ -53,7 +53,7 @@ public sealed class LabelController : Controller
         var labelId = await Mediator.Send(
             new CreateLabelCommand(dto),
             cancellationToken);
-        
+
         return CreatedAtAction(
             // ReSharper disable once Mvc.ActionNotResolved
             nameof(GetLabelAsync),
@@ -63,7 +63,7 @@ public sealed class LabelController : Controller
             },
             labelId);
     }
-    
+
     /// <summary>
     /// Запрос на обновление ярлыка
     /// </summary>
@@ -80,7 +80,7 @@ public sealed class LabelController : Controller
 
         return NoContent();
     }
-    
+
     /// <summary>
     /// Запрос на удаление ярлыка
     /// </summary>
