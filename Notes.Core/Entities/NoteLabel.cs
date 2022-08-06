@@ -14,7 +14,7 @@ public sealed class NoteLabel
     /// Заметка
     /// </summary>
     public Note? Note { get; set; }
-    
+
     /// <summary>
     /// Id ярлыка
     /// </summary>

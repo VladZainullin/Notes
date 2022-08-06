@@ -30,4 +30,11 @@ public sealed class AppDbContext : DbContext
         
         base.OnConfiguring(builder);
     }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.Load("Notes.Data"));
+        
+        base.OnModelCreating(modelBuilder);
+    }
 }

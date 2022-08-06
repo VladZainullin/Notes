@@ -44,7 +44,12 @@ builder.Services.AddScoped<DbContext, AppDbContext>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
+#region Swagger
+
 builder.Services.AddSwaggerGen();
+
+#endregion
 
 var app = builder.Build();
 
