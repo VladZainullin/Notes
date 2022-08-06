@@ -41,9 +41,9 @@ public sealed class NotesController : Controller
     /// <summary>
     /// Запрос на создание заметки
     /// </summary>
-    /// <param name="dto">Данные новой заметки</param>
+    /// <param name="dto">Данные заметки</param>
     /// <param name="cancellationToken">Токен отмены запроса</param>
-    /// <returns></returns>
+    /// <returns>Id заметки</returns>
     [HttpPost]
     public async Task<IActionResult> CreateNoteAsync(
         [FromBody] CreateNoteDto dto,
@@ -68,7 +68,6 @@ public sealed class NotesController : Controller
     /// </summary>
     /// <param name="noteId">Id заметки</param>
     /// <param name="cancellationToken">Токен отмены запроса</param>
-    /// <returns></returns>
     [HttpPut("{noteId:int}")]
     public async Task<IActionResult> UpdateNoteAsync(
         [FromRoute] int noteId,
@@ -86,7 +85,6 @@ public sealed class NotesController : Controller
     /// </summary>
     /// <param name="noteId">Id заметки</param>
     /// <param name="cancellationToken">Токен отмены запроса</param>
-    /// <returns></returns>
     [HttpDelete("{noteId:int}")]
     public async Task<IActionResult> DeleteNoteAsync(
         [FromRoute] int noteId,

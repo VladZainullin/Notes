@@ -7,9 +7,17 @@ using Notes.Data.Features.Labels.Queries.GetLabels;
 
 namespace Notes.Web.Controllers;
 
+/// <summary>
+/// Контроллер ярлыков
+/// </summary>
 [Route("api/labels")]
 public sealed class LabelController : Controller
 {
+    /// <summary>
+    /// Запрос на получение всех ярлыков
+    /// </summary>
+    /// <param name="cancellationToken"></param>
+    /// <returns>Ярлыки</returns>
     [HttpGet]
     public async Task<IActionResult> GetLabelsAsync(
         [FromQuery] CancellationToken cancellationToken)
@@ -17,6 +25,12 @@ public sealed class LabelController : Controller
         return Ok(await Mediator.Send(new GetLabelsQuery(), cancellationToken));
     }
 
+    /// <summary>
+    /// Запрос на получение ярлыка по id
+    /// </summary>
+    /// <param name="labelId">Id ярлыка</param>
+    /// <param name="cancellationToken">Токен отмены запроса</param>
+    /// <returns>Ярлык</returns>
     [HttpGet("{labelId:int}", Name = nameof(GetLabelAsync))]
     public async Task<IActionResult> GetLabelAsync(
         [FromRoute] int labelId,
@@ -25,6 +39,12 @@ public sealed class LabelController : Controller
         return Ok(await Mediator.Send(new GetLabelQuery(labelId), cancellationToken));
     }
     
+    /// <summary>
+    /// Запрос на создание ярлыка
+    /// </summary>
+    /// <param name="dto">Данные ярлыка</param>
+    /// <param name="cancellationToken">Токен отмены запроса</param>
+    /// <returns>Id ярлыка</returns>
     [HttpPost]
     public async Task<IActionResult> CreateLabelAsync(
         [FromBody] CreateLabelDto dto,
@@ -44,6 +64,12 @@ public sealed class LabelController : Controller
             labelId);
     }
     
+    /// <summary>
+    /// Запрос на обновление ярлыка
+    /// </summary>
+    /// <param name="labelId">Id ярлыка</param>
+    /// <param name="dto">Обновлённые данные</param>
+    /// <param name="cancellationToken">Токен отмены запроса</param>
     [HttpPut("{labelId:int}")]
     public async Task<IActionResult> UpdateLabelAsync(
         [FromRoute] int labelId,
@@ -55,7 +81,12 @@ public sealed class LabelController : Controller
         return NoContent();
     }
     
-    [HttpPut("{labelId:int}")]
+    /// <summary>
+    /// Запрос на удаление ярлыка
+    /// </summary>
+    /// <param name="labelId">Id ярлыка</param>
+    /// <param name="cancellationToken">Токен отмкены запроса</param>
+    [HttpDelete("{labelId:int}")]
     public async Task<IActionResult> DeleteLabelAsync(
         [FromRoute] int labelId,
         [FromQuery] CancellationToken cancellationToken)
