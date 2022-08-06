@@ -28,10 +28,10 @@ internal sealed class DeleteNoteLabelHandler :
         DeleteNoteLabelCommand request,
         CancellationToken cancellationToken)
     {
-        var noteLabelExists = await IsExistsNoteLabelsAsync(
+        var exists = await IsExistsNoteLabelsAsync(
             request,
             cancellationToken);
-        if (noteLabelExists)
+        if (!exists)
             throw new BadRequestException("Ярлык заметки не найден!");
 
         var noteLabel = _mapper.Map<NoteLabel>(request);

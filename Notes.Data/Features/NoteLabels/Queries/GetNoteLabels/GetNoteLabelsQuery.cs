@@ -28,9 +28,8 @@ internal sealed class GetNoteLabelsHandler :
         CancellationToken cancellationToken)
     {
         var dtos = await _context
-            .Set<Note>()
-            .Where(n => n.Id == request.NoteId)
-            .Select(n => n.NoteLabels)
+            .Set<NoteLabel>()
+            .Where(n => n.NoteId == request.NoteId)
             .ProjectTo<GetNoteLabelsDto>(_provider)
             .ToListAsync(cancellationToken);
 

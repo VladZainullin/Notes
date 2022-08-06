@@ -31,13 +31,13 @@ internal sealed class CreateNoteLabelHandler :
         var noteExists = await IsExistsNoteAsync(
             request.NoteId,
             cancellationToken);
-        if (noteExists)
+        if (!noteExists)
             throw new BadRequestException("Заметка не найдена!");
 
         var labelExists = await IsExistsLabelAsync(
             request.LabelId,
             cancellationToken);
-        if (labelExists)
+        if (!labelExists)
             throw new BadRequestException("Ярлык не найден!");
         
         var noteLabelExists = await IsExistsNoteLabelsAsync(
