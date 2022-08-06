@@ -35,10 +35,10 @@ internal sealed class GetNoteHandler :
         CancellationToken cancellationToken)
     {
         var exists = await IsExistsNoteAsync(request.NoteId, cancellationToken);
-        if (exists)
+        if (!exists)
             throw new NotFoundException("Заметка не найдена");
 
-        var note = GetNoteAsync(request.NoteId, cancellationToken);
+        var note = await GetNoteAsync(request.NoteId, cancellationToken);
 
         return _mapper.Map<GetNoteDto>(note);
     }

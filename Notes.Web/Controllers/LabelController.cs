@@ -54,7 +54,7 @@ public sealed class LabelController : Controller
             new CreateLabelCommand(dto),
             cancellationToken);
 
-        return CreatedAtAction(
+        return CreatedAtRoute(
             // ReSharper disable once Mvc.ActionNotResolved
             nameof(GetLabelAsync),
             new

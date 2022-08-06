@@ -1,6 +1,6 @@
 namespace Notes.Data.Features.Notes.Commands.UpdateNote;
 
-public class UpdateNoteDto
+public sealed class UpdateNoteDto
 {
     public string? Header { get; set; }
 

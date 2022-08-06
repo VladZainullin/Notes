@@ -31,7 +31,7 @@ internal sealed class DeleteNoteHandler :
         CancellationToken cancellationToken)
     {
         var exists = await IsExistsNoteAsync(request.NoteId, cancellationToken);
-        if (exists)
+        if (!exists)
             throw new BadRequestException("Попытка удаления не существующей заметки");
 
         var note = await GetNoteAsync(request.NoteId, cancellationToken);

@@ -3,7 +3,7 @@ using Notes.Core.Entities;
 
 namespace Notes.Data.Features.Notes.Queries.GetNotes;
 
-internal class GetNotesProfile : Profile
+internal sealed class GetNotesProfile : Profile
 {
     public GetNotesProfile()
     {

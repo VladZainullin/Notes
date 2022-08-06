@@ -1,13 +1,12 @@
 using AutoMapper;
 using Notes.Core.Entities;
-using Notes.Data.Features.Notes.Queries.GetNotes;
 
 namespace Notes.Data.Features.Notes.Queries.GetNote;
 
-internal class GetNoteProfile : Profile
+internal sealed class GetNoteProfile : Profile
 {
     public GetNoteProfile()
     {
-        CreateMap<Note, GetNotesDto>();
+        CreateMap<Note, GetNoteDto>();
     }
 }

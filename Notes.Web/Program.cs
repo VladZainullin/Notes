@@ -15,7 +15,7 @@ builder.Services.AddMediatR(Assembly.Load("Notes.Data"));
 
 #region AutoMapper
 
-builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+builder.Services.AddAutoMapper(Assembly.Load("Notes.Data"));
 
 #endregion
 

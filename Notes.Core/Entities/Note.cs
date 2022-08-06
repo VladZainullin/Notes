@@ -3,7 +3,7 @@
 /// <summary>
 ///     Заметка
 /// </summary>
-public class Note
+public sealed class Note
 {
     /// <summary>
     ///     Id заметки

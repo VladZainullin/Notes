@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Notes.Data.Features.Notes.Commands.CreateNote;
 using Notes.Data.Features.Notes.Commands.DeleteNote;
+using Notes.Data.Features.Notes.Commands.UpdateNote;
 using Notes.Data.Features.Notes.Queries.GetNote;
 using Notes.Data.Features.Notes.Queries.GetNotes;
 
@@ -54,7 +55,7 @@ public sealed class NotesController : Controller
             cancellationToken);
 
         // ReSharper disable once Mvc.ActionNotResolved
-        return CreatedAtAction(
+        return CreatedAtRoute(
             nameof(GetNoteAsync),
             new
             {
@@ -67,14 +68,16 @@ public sealed class NotesController : Controller
     /// Запрос на обновление заметки
     /// </summary>
     /// <param name="noteId">Id заметки</param>
+    /// <param name="dto">Обновлённые данные</param>
     /// <param name="cancellationToken">Токен отмены запроса</param>
     [HttpPut("{noteId:int}")]
     public async Task<IActionResult> UpdateNoteAsync(
         [FromRoute] int noteId,
+        [FromBody] UpdateNoteDto dto,
         [FromQuery] CancellationToken cancellationToken)
     {
         await Mediator.Send(
-            new GetNoteQuery(noteId),
+            new UpdateNoteCommand(noteId, dto),
             cancellationToken);
 
         return NoContent();

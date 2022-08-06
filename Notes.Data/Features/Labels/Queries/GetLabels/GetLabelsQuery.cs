@@ -1,3 +1,4 @@
+using System.Reflection;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
@@ -29,17 +30,11 @@ internal sealed class GetLabelHandler :
         GetLabelsQuery request,
         CancellationToken cancellationToken)
     {
-        var dtos = await GetDtoAsync(cancellationToken);
-
-        return dtos;
-    }
-
-    private async Task<IEnumerable<GetLabelsDto>> GetDtoAsync(
-        CancellationToken cancellationToken)
-    {
-        return await _context
+        var dtos = await _context
             .Set<Label>()
             .ProjectTo<GetLabelsDto>(_provider)
             .ToListAsync(cancellationToken);
+
+        return dtos;
     }
 }

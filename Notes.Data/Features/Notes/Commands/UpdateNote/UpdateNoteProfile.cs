@@ -3,7 +3,7 @@ using Notes.Core.Entities;
 
 namespace Notes.Data.Features.Notes.Commands.UpdateNote;
 
-internal class UpdateNoteProfile : Profile
+internal sealed class UpdateNoteProfile : Profile
 {
     public UpdateNoteProfile()
     {
