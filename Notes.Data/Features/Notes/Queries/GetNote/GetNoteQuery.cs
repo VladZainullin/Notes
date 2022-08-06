@@ -6,15 +6,7 @@ using Notes.Data.Exceptions;
 
 namespace Notes.Data.Features.Notes.Queries.GetNote;
 
-public sealed class GetNoteQuery : IRequest<GetNoteDto>
-{
-    public GetNoteQuery(int noteId)
-    {
-        NoteId = noteId;
-    }
-
-    public int NoteId { get; }
-}
+public sealed record GetNoteQuery(int NoteId) : IRequest<GetNoteDto>;
 
 internal sealed class GetNoteHandler :
     IRequestHandler<GetNoteQuery, GetNoteDto>

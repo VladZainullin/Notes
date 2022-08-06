@@ -1,8 +1,8 @@
 namespace Notes.Data.Features.Notes.Commands.UpdateNote;
 
-public sealed class UpdateNoteDto
+public sealed record UpdateNoteDto
 {
-    public string? Header { get; set; }
+    public string? Header { get; init; }
 
-    public string? Body { get; set; }
+    public string? Body { get; init; }
 }

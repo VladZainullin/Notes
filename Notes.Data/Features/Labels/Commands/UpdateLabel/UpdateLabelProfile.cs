@@ -3,7 +3,7 @@ using Notes.Core.Entities;
 
 namespace Notes.Data.Features.Labels.Commands.UpdateLabel;
 
-public sealed class UpdateLabelProfile : Profile
+internal sealed class UpdateLabelProfile : Profile
 {
     public UpdateLabelProfile()
     {

@@ -1,8 +1,8 @@
 namespace Notes.Data.Features.Notes.Commands.CreateNote;
 
-public sealed class CreateNoteDto
+public sealed record CreateNoteDto
 {
-    public string? Header { get; set; }
+    public string? Header { get; init; }
 
-    public string? Body { get; set; }
+    public string? Body { get; init; }
 }

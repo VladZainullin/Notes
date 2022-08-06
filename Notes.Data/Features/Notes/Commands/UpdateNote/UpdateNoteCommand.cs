@@ -6,17 +6,7 @@ using Notes.Data.Exceptions;
 
 namespace Notes.Data.Features.Notes.Commands.UpdateNote;
 
-public sealed class UpdateNoteCommand : IRequest
-{
-    public UpdateNoteCommand(int id, UpdateNoteDto? updateNoteDto)
-    {
-        Id = id;
-        UpdateNoteDto = updateNoteDto;
-    }
-
-    internal int Id { get; }
-    internal UpdateNoteDto? UpdateNoteDto { get; set; }
-}
+public sealed record UpdateNoteCommand(int NoteId, UpdateNoteDto Dto) : IRequest;
 
 internal sealed class UpdateNoteHandler : AsyncRequestHandler<UpdateNoteCommand>
 {
@@ -36,17 +26,17 @@ internal sealed class UpdateNoteHandler : AsyncRequestHandler<UpdateNoteCommand>
         CancellationToken cancellationToken)
     {
         var exists = await IsExistsNoteAsync(
-            request.Id,
+            request.NoteId,
             cancellationToken);
 
         if (!exists)
             throw new BadRequestException("Попытка обновить несуществующую заметку");
 
         var note = await GetNoteAsync(
-            request.Id,
+            request.NoteId,
             cancellationToken);
 
-        _mapper.Map(request.UpdateNoteDto, note);
+        _mapper.Map(request.Dto, note);
         await _context.SaveChangesAsync(cancellationToken);
     }
 

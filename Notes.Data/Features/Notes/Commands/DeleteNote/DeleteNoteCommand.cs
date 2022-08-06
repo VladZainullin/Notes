@@ -5,16 +5,7 @@ using Notes.Data.Exceptions;
 
 namespace Notes.Data.Features.Notes.Commands.DeleteNote;
 
-public sealed class DeleteNoteCommand :
-    IRequest
-{
-    public DeleteNoteCommand(int noteId)
-    {
-        NoteId = noteId;
-    }
-
-    public int NoteId { get; }
-}
+public sealed record DeleteNoteCommand(int NoteId) : IRequest;
 
 internal sealed class DeleteNoteHandler :
     AsyncRequestHandler<DeleteNoteCommand>

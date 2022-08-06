@@ -1,10 +1,10 @@
 namespace Notes.Data.Features.Notes.Queries.GetNote;
 
-internal sealed class GetNoteDto
+internal sealed record GetNoteDto
 {
-    public int Id { get; set; }
+    public int Id { get; init; }
 
-    public string? Header { get; set; }
+    public string? Header { get; init; }
 
-    public string? Body { get; set; }
+    public string? Body { get; init; }
 }

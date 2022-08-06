@@ -6,9 +6,7 @@ using Notes.Core.Entities;
 
 namespace Notes.Data.Features.Notes.Queries.GetNotes;
 
-public sealed class GetNotesQuery : IRequest<IEnumerable<GetNotesDto>>
-{
-}
+public sealed record GetNotesQuery : IRequest<IEnumerable<GetNotesDto>>;
 
 internal sealed class GetNotesHandler :
     IRequestHandler<GetNotesQuery, IEnumerable<GetNotesDto>>
