@@ -84,7 +84,7 @@ public sealed class NotesController : Controller
     /// <summary>
     /// Запрос на удаление заметки
     /// </summary>
-    /// <param name="noteId">Id pfvtnrb</param>
+    /// <param name="noteId">Id заметки</param>
     /// <param name="cancellationToken">Токен отмены запроса</param>
     /// <returns></returns>
     [HttpDelete("{noteId:int}")]
