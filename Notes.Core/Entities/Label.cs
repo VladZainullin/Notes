@@ -1,12 +1,9 @@
-using Notes.Core.Interfaces;
-
 namespace Notes.Core.Entities;
 
 /// <summary>
 ///     Ярлык
 /// </summary>
-public sealed class Label : 
-    IHasId
+public sealed class Label
 {
     /// <summary>
     ///     Id ярлыка

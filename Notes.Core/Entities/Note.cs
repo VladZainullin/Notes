@@ -1,11 +1,9 @@
-﻿using Notes.Core.Interfaces;
-
-namespace Notes.Core.Entities;
+﻿namespace Notes.Core.Entities;
 
 /// <summary>
 ///     Заметка
 /// </summary>
-public sealed class Note : IHasId
+public sealed class Note
 {
     /// <summary>
     ///     Id заметки
