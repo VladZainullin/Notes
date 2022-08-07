@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Notes.Core.Entities;
 using Notes.Core.Interafaces;
+using Notes.Core.Interfaces;
 using Notes.Data.Visitors;
 
 namespace Notes.Data.Contexts;

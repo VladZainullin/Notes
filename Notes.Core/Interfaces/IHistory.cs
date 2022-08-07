@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace Notes.Core.Interafaces;
+namespace Notes.Core.Interfaces;
 
 public interface IHistory
 {

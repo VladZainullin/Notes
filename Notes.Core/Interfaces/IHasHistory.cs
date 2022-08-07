@@ -1,3 +1,5 @@
+using Notes.Core.Interfaces;
+
 namespace Notes.Core.Interafaces;
 
 public interface IHasHistory<out THistory>

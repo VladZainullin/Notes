@@ -1,4 +1,5 @@
 using Notes.Core.Interafaces;
+using Notes.Core.Interfaces;
 
 namespace Notes.Core.Entities;
 
@@ -21,8 +22,8 @@ public sealed class Label : IHasHistory<LabelHistory>
     ///     Ярлыки заметок
     /// </summary>
     public ICollection<NoteLabel> NoteLabels { get; set; } = new List<NoteLabel>();
-    
-    public IReadOnlyCollection<LabelHistory> Histories { get; }
+
+    public IReadOnlyCollection<LabelHistory> Histories { get; } = new List<LabelHistory>();
     public LabelHistory Access(IHasHistoryVisitor visitor)
     {
         return visitor.Visit(this);

@@ -1,3 +1,5 @@
+using Notes.Core.Interafaces;
+
 namespace Notes.Core.Entities;
 
 /// <summary>
