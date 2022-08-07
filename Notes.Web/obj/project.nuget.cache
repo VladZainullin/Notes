@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "+ZWZwiE1DDLfIJfOv7CYukLDjlzGUqfz1l4y7bX8zSaDBqSxrhkRRzvgoUbLl2eyktVEzaJTLqeQwsU3ARcbvw==",
+  "dgSpecHash": "ni6eb+DuCTRaPX4d2tuzmE/yMyI2pikUn+L3z/9QJ+qBdins+WH18iATjdqYNgpLOTwZVbGffHM1hxaq2n76XQ==",
   "success": true,
   "projectFilePath": "/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/Notes.Web.csproj",
   "expectedPackageFiles": [
@@ -33,6 +33,7 @@
     "/Users/vadislavzainullin/.nuget/packages/microsoft.extensions.options.configurationextensions/2.0.0/microsoft.extensions.options.configurationextensions.2.0.0.nupkg.sha512",
     "/Users/vadislavzainullin/.nuget/packages/microsoft.extensions.primitives/6.0.0/microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "/Users/vadislavzainullin/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/Users/vadislavzainullin/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512",
     "/Users/vadislavzainullin/.nuget/packages/npgsql/6.0.6/npgsql.6.0.6.nupkg.sha512",
     "/Users/vadislavzainullin/.nuget/packages/npgsql.entityframeworkcore.postgresql/6.0.6/npgsql.entityframeworkcore.postgresql.6.0.6.nupkg.sha512",
     "/Users/vadislavzainullin/.nuget/packages/serilog/2.10.0/serilog.2.10.0.nupkg.sha512",

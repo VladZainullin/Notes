@@ -15,3 +15,4 @@
 /Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Data/obj/Debug/net6.0/Notes.Data.pdb
 /Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Data/obj/Debug/net6.0/Notes.Data.genruntimeconfig.cache
 /Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Data/obj/Debug/net6.0/ref/Notes.Data.dll
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Data/bin/Debug/net6.0/Microsoft.AspNetCore.Http.Abstractions.dll

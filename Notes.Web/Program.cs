@@ -2,10 +2,18 @@ using System.Reflection;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Notes.Data.Contexts;
+using Notes.Data.Middlewares;
 using Serilog;
 using Serilog.Events;
 
 var builder = WebApplication.CreateBuilder(args);
+
+#region Services
+
+builder.Services.AddScoped<LoggerMiddleware>();
+builder.Services.AddScoped<ExceptionMiddleware>();
+
+#endregion
 
 #region MediatR
 
@@ -53,7 +61,11 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+#region Serilog
+
 app.UseSerilogRequestLogging();
+
+#endregion
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -65,6 +77,13 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+#region Middlewares
+
+app.UseMiddleware<ExceptionMiddleware>();
+app.UseMiddleware<LoggerMiddleware>();
+
+#endregion
 
 app.MapControllers();
 
