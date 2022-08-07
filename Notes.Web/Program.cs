@@ -42,6 +42,7 @@ builder.Services.AddSingleton(Log.Logger);
 
 #region Connections
 
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 builder.Services.AddDbContext<AppDbContext>();
 builder.Services.AddScoped<DbContext, AppDbContext>();
 

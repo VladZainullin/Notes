@@ -2,6 +2,8 @@ using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Notes.Core.Entities;
+using Notes.Core.Interafaces;
+using Notes.Data.Visitors;
 
 namespace Notes.Data.Contexts;
 
@@ -33,5 +35,32 @@ public sealed class AppDbContext : DbContext
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.Load("Notes.Data"));
 
         base.OnModelCreating(modelBuilder);
+    }
+
+    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+    {
+        var entries = ChangeTracker.Entries<IHasHistory<IHistory>>().ToList();
+        foreach (var entry in entries)
+        {
+            switch (entry.State)
+            {
+                case EntityState.Added:
+                    var history = entry.Entity.Access(new HasHistoryVisitor());
+                    await AddAsync(history, cancellationToken);
+                    break;
+                case EntityState.Detached:
+                    break;
+                case EntityState.Unchanged:
+                    break;
+                case EntityState.Deleted:
+                    break;
+                case EntityState.Modified:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+        
+        return await base.SaveChangesAsync(cancellationToken);
     }
 }
