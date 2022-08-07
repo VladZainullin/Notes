@@ -6,5 +6,5 @@ public interface IHistory
 {
     public DateTime DateOfModification { get; set; }
 
-    public EntityState EntityState { get; set; }
+    public EntityState State { get; set; }
 }

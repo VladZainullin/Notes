@@ -433,6 +433,9 @@
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
       "System.Text.Json/4.6.0": {},
       "Notes.Core/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "6.0.7"
+        },
         "runtime": {
           "Notes.Core.dll": {}
         }

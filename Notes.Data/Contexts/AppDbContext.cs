@@ -37,28 +37,15 @@ public sealed class AppDbContext : DbContext
         base.OnModelCreating(modelBuilder);
     }
 
-    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        var entries = ChangeTracker.Entries<IHasHistory<IHistory>>().ToList();
+        var entries = ChangeTracker
+            .Entries<IHasHistory<IHistory>>()
+            .ToList();
         foreach (var entry in entries)
         {
-            switch (entry.State)
-            {
-                case EntityState.Added:
-                    var history = entry.Entity.Access(new HasHistoryVisitor());
-                    await AddAsync(history, cancellationToken);
-                    break;
-                case EntityState.Detached:
-                    break;
-                case EntityState.Unchanged:
-                    break;
-                case EntityState.Deleted:
-                    break;
-                case EntityState.Modified:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            var history = entry.Entity.Access(new HasHistoryVisitor(entry.State));
+            await AddAsync(history, cancellationToken);
         }
         
         return await base.SaveChangesAsync(cancellationToken);
