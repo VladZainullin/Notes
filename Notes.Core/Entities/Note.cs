@@ -1,5 +1,4 @@
-﻿using Notes.Core.Interafaces;
-using Notes.Core.Interfaces;
+﻿using Notes.Core.Interfaces;
 
 namespace Notes.Core.Entities;
 

@@ -1,6 +1,4 @@
-using Notes.Core.Interfaces;
-
-namespace Notes.Core.Interafaces;
+namespace Notes.Core.Interfaces;
 
 public interface IHasHistory<out THistory>
     where THistory : IHistory
