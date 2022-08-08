@@ -57,3 +57,6 @@
 /Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/MiniProfiler.AspNetCore.Mvc.dll
 /Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/MiniProfiler.Shared.dll
 /Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/MiniProfiler.EntityFrameworkCore.dll
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/MailKit.dll
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/MimeKit.dll
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/BouncyCastle.Crypto.dll

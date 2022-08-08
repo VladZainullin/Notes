@@ -3,12 +3,20 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Notes.Data.Contexts;
 using Notes.Data.Middlewares;
+using Notes.Data.Services;
 using Serilog;
 using Serilog.Events;
 using StackExchange.Profiling;
 using StackExchange.Profiling.Storage;
 
 var builder = WebApplication.CreateBuilder(args);
+
+#region Options
+
+builder.Services.AddOptions();
+builder.Services.Configure<EmailOptions>(builder.Configuration.GetSection("Email"));
+
+#endregion
 
 #region Mini profiler
 
@@ -17,7 +25,7 @@ builder.Services
     {
         options.ColorScheme = ColorScheme.Dark;
         options.RouteBasePath = "/mini-profiler"; //https://localhost:7199/mini-profiler/results-index
-        ((options.Storage as MemoryCacheStorage)!).CacheDuration = TimeSpan.FromMinutes(15);
+        (options.Storage as MemoryCacheStorage)!.CacheDuration = TimeSpan.FromMinutes(15);
     })
     .AddEntityFramework();
 
@@ -27,6 +35,7 @@ builder.Services
 
 builder.Services.AddScoped<LoggerMiddleware>();
 builder.Services.AddScoped<ExceptionMiddleware>();
+builder.Services.AddScoped<EmailService>();
 
 #endregion
 
