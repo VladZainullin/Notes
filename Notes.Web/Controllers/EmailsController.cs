@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Notes.Data.Services;
+using Notes.Data.Services.Emails;
 
 namespace Notes.Web.Controllers;
 
@@ -15,13 +16,13 @@ public class EmailsController : Controller
 
     [HttpPost]
     public async Task<IActionResult> SendEmailAsync(
-        [FromBody] MessageDto message,
+        [FromBody] EmailDto email,
         [FromQuery] CancellationToken cancellationToken)
     {
         await _emailService.Send(
-            message.To,
-            message.Subject!,
-            message.Html!,
+            email.To,
+            email.Subject!,
+            email.Html!,
             cancellationToken);
 
         return NoContent();

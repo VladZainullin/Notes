@@ -3,6 +3,7 @@ using MailKit.Security;
 using Microsoft.Extensions.Options;
 using MimeKit;
 using MimeKit.Text;
+using Notes.Data.Services.Emails;
 
 namespace Notes.Data.Services;
 

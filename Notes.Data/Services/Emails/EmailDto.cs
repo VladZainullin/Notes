@@ -1,6 +1,6 @@
-namespace Notes.Data.Services;
+namespace Notes.Data.Services.Emails;
 
-public sealed class MessageDto
+public sealed class EmailDto
 {
     public string To { get; set; } = null!;
     public string Subject { get; set; } = null!;

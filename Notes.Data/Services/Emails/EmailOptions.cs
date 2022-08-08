@@ -1,4 +1,4 @@
-namespace Notes.Data.Services;
+namespace Notes.Data.Services.Emails;
 
 public sealed class EmailOptions
 {
