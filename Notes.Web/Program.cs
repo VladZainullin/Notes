@@ -5,8 +5,23 @@ using Notes.Data.Contexts;
 using Notes.Data.Middlewares;
 using Serilog;
 using Serilog.Events;
+using StackExchange.Profiling;
+using StackExchange.Profiling.Storage;
 
 var builder = WebApplication.CreateBuilder(args);
+
+#region Mini profiler
+
+builder.Services
+    .AddMiniProfiler(options =>
+    {
+        options.ColorScheme = ColorScheme.Dark;
+        options.RouteBasePath = "/mini-profiler"; //https://localhost:7199/mini-profiler/results-index
+        ((options.Storage as MemoryCacheStorage)!).CacheDuration = TimeSpan.FromMinutes(15);
+    })
+    .AddEntityFramework();
+
+#endregion
 
 #region Services
 
@@ -73,6 +88,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseMiniProfiler();
 }
 
 app.UseHttpsRedirection();
