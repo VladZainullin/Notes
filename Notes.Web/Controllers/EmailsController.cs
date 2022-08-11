@@ -19,7 +19,7 @@ public class EmailsController : Controller
         [FromBody] EmailDto email,
         [FromQuery] CancellationToken cancellationToken)
     {
-        await _emailService.Send(
+        await _emailService.SendAsync(
             email.To,
             email.Subject!,
             email.Html!,

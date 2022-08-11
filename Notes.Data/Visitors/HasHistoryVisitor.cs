@@ -4,7 +4,7 @@ using Notes.Core.Interfaces;
 
 namespace Notes.Data.Visitors;
 
-public sealed class HasHistoryVisitor : 
+internal sealed class HasHistoryVisitor : 
     IHasHistoryVisitor
 {
     private readonly EntityState _state;

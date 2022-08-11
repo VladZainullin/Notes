@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 namespace Notes.Data.Exceptions;
 
 [Serializable]
-public class BadRequestException : Exception
+internal class BadRequestException : Exception
 {
     //
     // For guidelines regarding the creation of new exception types, see

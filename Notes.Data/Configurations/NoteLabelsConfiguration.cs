@@ -4,7 +4,7 @@ using Notes.Core.Entities;
 
 namespace Notes.Data.Configurations;
 
-public sealed class NoteLabelsConfiguration : IEntityTypeConfiguration<NoteLabel>
+internal sealed class NoteLabelsConfiguration : IEntityTypeConfiguration<NoteLabel>
 {
     public void Configure(EntityTypeBuilder<NoteLabel> builder)
     {
