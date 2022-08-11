@@ -1,45 +1,37 @@
-using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Notes.Core.Entities;
 using Notes.Data.Exceptions;
 
-namespace Notes.Data.Features.Notes.Commands.UpdateNote;
+namespace Notes.Data.Features.Notes.Commands.PinNote;
 
-public sealed record UpdateNoteCommand(int NoteId, UpdateNoteDto Dto) : IRequest;
+public sealed record PinNoteCommand(int NoteId) : IRequest;
 
-internal sealed class UpdateNoteHandler : AsyncRequestHandler<UpdateNoteCommand>
+internal sealed class PinNoteHandler : AsyncRequestHandler<PinNoteCommand>
 {
     private readonly DbContext _context;
-    private readonly IMapper _mapper;
 
-    public UpdateNoteHandler(
-        DbContext context,
-        IMapper mapper)
+    public PinNoteHandler(DbContext context)
     {
         _context = context;
-        _mapper = mapper;
     }
-
+    
     protected override async Task Handle(
-        UpdateNoteCommand request,
+        PinNoteCommand request,
         CancellationToken cancellationToken)
     {
-        var exists = await IsExistsNoteAsync(
-            request.NoteId,
-            cancellationToken);
-
+        var exists = await IsExistsNoteAsync(request.NoteId, cancellationToken);
         if (!exists)
-            throw new BadRequestException("Попытка обновить несуществующую заметку");
+        {
+            throw new BadRequestException("Попытка закрепить несуществующую заметку");
+        }
+        
+        var note = await GetNoteAsync(request.NoteId, cancellationToken);
+        note.IsPinned = true;
 
-        var note = await GetNoteAsync(
-            request.NoteId,
-            cancellationToken);
-
-        _mapper.Map(request.Dto, note);
         await _context.SaveChangesAsync(cancellationToken);
     }
-
+    
     private async Task<bool> IsExistsNoteAsync(
         int noteId,
         CancellationToken cancellationToken)

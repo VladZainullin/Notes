@@ -7,4 +7,6 @@ internal sealed record GetNoteDto
     public string? Header { get; init; }
 
     public string? Body { get; init; }
+    
+    public bool IsPinned { get; set; }
 }

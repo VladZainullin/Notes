@@ -24,6 +24,11 @@ public sealed class Note :
     public string? Body { get; set; }
 
     /// <summary>
+    /// Флаг закреплена/откреплена
+    /// </summary>
+    public bool IsPinned { get; set; }
+
+    /// <summary>
     ///     Ярлыки заметок
     /// </summary>
     public ICollection<NoteLabel> NoteLabels { get; set; } = new List<NoteLabel>();

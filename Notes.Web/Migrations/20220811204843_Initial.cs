@@ -30,7 +30,8 @@ namespace Notes.Web.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Header = table.Column<string>(type: "text", nullable: true),
-                    Body = table.Column<string>(type: "text", nullable: true)
+                    Body = table.Column<string>(type: "text", nullable: true),
+                    IsPinned = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -67,9 +68,9 @@ namespace Notes.Web.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Header = table.Column<string>(type: "text", nullable: true),
                     Body = table.Column<string>(type: "text", nullable: true),
+                    NoteId = table.Column<int>(type: "integer", nullable: false),
                     DateOfModification = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    State = table.Column<int>(type: "integer", nullable: false),
-                    NoteId = table.Column<int>(type: "integer", nullable: false)
+                    State = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {

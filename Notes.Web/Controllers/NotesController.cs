@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Notes.Data.Features.Notes.Commands.CreateNote;
 using Notes.Data.Features.Notes.Commands.DeleteNote;
+using Notes.Data.Features.Notes.Commands.PinNote;
+using Notes.Data.Features.Notes.Commands.UnpinNote;
 using Notes.Data.Features.Notes.Commands.UpdateNote;
 using Notes.Data.Features.Notes.Queries.GetNote;
 using Notes.Data.Features.Notes.Queries.GetNotes;
@@ -83,6 +85,36 @@ public sealed class NotesController : Controller
         await Mediator.Send(
             new UpdateNoteCommand(noteId, dto),
             cancellationToken);
+
+        return NoContent();
+    }
+
+    /// <summary>
+    ///     Команда на закрепление заметки
+    /// </summary>
+    /// <param name="noteId">Id заметки</param>
+    /// <param name="cancellationToken">Токен отмены команды</param>
+    [HttpPut("{noteId:int}/pin")]
+    public async Task<IActionResult> PinNoteAsync(
+        [FromRoute] int noteId,
+        [FromQuery] CancellationToken cancellationToken)
+    {
+        await Mediator.Send(new PinNoteCommand(noteId), cancellationToken);
+
+        return NoContent();
+    }
+
+    /// <summary>
+    ///     Команда на открепление заметки
+    /// </summary>
+    /// <param name="noteId">Id заметки</param>
+    /// <param name="cancellationToken">Токен отмены команды</param>
+    [HttpPut("{noteId:int}/unpin")]
+    public async Task<IActionResult> UnpinNoteAsync(
+        [FromRoute] int noteId,
+        [FromQuery] CancellationToken cancellationToken)
+    {
+        await Mediator.Send(new UnpinNoteCommand(noteId), cancellationToken);
 
         return NoContent();
     }

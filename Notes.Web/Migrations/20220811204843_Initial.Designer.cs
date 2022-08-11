@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Notes.Web.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220809203313_Initial")]
+    [Migration("20220811204843_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -80,6 +80,9 @@ namespace Notes.Web.Migrations
 
                     b.Property<string>("Header")
                         .HasColumnType("text");
+
+                    b.Property<bool>("IsPinned")
+                        .HasColumnType("boolean");
 
                     b.HasKey("Id");
 
