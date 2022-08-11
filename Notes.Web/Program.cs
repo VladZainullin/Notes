@@ -5,7 +5,6 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Notes.Data.Contexts;
 using Notes.Data.Middlewares;
-using Notes.Data.Services;
 using Notes.Data.Services.Emails;
 using Serilog;
 using Serilog.Events;

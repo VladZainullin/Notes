@@ -4,7 +4,7 @@ using Notes.Core.Interfaces;
 
 namespace Notes.Data.Visitors;
 
-internal sealed class HasHistoryVisitor : 
+internal sealed class HasHistoryVisitor :
     IHasHistoryVisitor
 {
     private readonly EntityState _state;
@@ -13,6 +13,7 @@ internal sealed class HasHistoryVisitor :
     {
         _state = state;
     }
+
     public LabelHistory Visit(Label entity)
     {
         var history = new LabelHistory

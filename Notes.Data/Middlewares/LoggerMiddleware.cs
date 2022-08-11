@@ -4,27 +4,27 @@ using Serilog;
 namespace Notes.Data.Middlewares;
 
 /// <summary>
-/// Промежуточное програмное обеспечение для журналирования исключений
+///     Промежуточное програмное обеспечение для журналирования исключений
 /// </summary>
 public class LoggerMiddleware : IMiddleware
 {
     /// <summary>
-    /// Логгер
+    ///     Логгер
     /// </summary>
     private readonly ILogger _logger;
 
     /// <summary>
-    /// Конструктор промежуточного програмного
-    /// обеспечения для журналирования исключений
+    ///     Конструктор промежуточного програмного
+    ///     обеспечения для журналирования исключений
     /// </summary>
     /// <param name="logger">Логгер</param>
     public LoggerMiddleware(ILogger logger)
     {
         _logger = logger;
     }
-    
+
     /// <summary>
-    /// Метод обработки запроса
+    ///     Метод обработки запроса
     /// </summary>
     /// <param name="context">Контекст запроса</param>
     /// <param name="next">Делегат перемещения в следующее промежуточное програмное обеспечение</param>

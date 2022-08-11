@@ -7,17 +7,17 @@ using MimeKit.Text;
 namespace Notes.Data.Services.Emails;
 
 /// <summary>
-/// Сервис отправки писем на электронную почту
+///     Сервис отправки писем на электронную почту
 /// </summary>
 public sealed class EmailService
 {
     /// <summary>
-    /// Опции отправки сообщения
+    ///     Опции отправки сообщения
     /// </summary>
     private readonly IOptions<EmailOptions> _options;
 
     /// <summary>
-    /// конструктор сервиса отправки писем на электронную почту
+    ///     конструктор сервиса отправки писем на электронную почту
     /// </summary>
     /// <param name="options"></param>
     public EmailService(IOptions<EmailOptions> options)
@@ -26,13 +26,14 @@ public sealed class EmailService
     }
 
     /// <summary>
-    /// Метод отправки сообщения на электронную почту
-    /// по указанным параметрам
+    ///     Метод отправки сообщения на электронную почту
+    ///     по указанным параметрам
     /// </summary>
     /// <param name="to">Адрес электронной почты получателя</param>
     /// <param name="subject">Тема письма</param>
     /// <param name="html">Содержимое письма в формате HTML</param>
-    /// <param name="cancellationToken">Токен отмены запроса</param>>
+    /// <param name="cancellationToken">Токен отмены запроса</param>
+    /// >
     public async Task SendAsync(
         string to,
         string subject,
@@ -47,14 +48,14 @@ public sealed class EmailService
     }
 
     /// <summary>
-    /// Метод создания письма
+    ///     Метод создания письма
     /// </summary>
     /// <param name="to">Адрес электронной почты получатетеля</param>
     /// <param name="subject">Тема письма</param>
     /// <param name="html">Содержимое письма в формате HTML</param>
     /// <returns>Сформированное письмо</returns>
     private MimeMessage CreateMessage(
-        in string to, 
+        in string to,
         in string subject,
         in string html)
     {
@@ -71,7 +72,7 @@ public sealed class EmailService
     }
 
     /// <summary>
-    /// Метод отправки сообщения на электронную почту
+    ///     Метод отправки сообщения на электронную почту
     /// </summary>
     /// <param name="email">Письмо</param>
     /// <param name="cancellationToken">Токен отмены</param>
@@ -85,12 +86,12 @@ public sealed class EmailService
             _options.Value.Port,
             SecureSocketOptions.StartTls,
             cancellationToken);
-        
+
         await smtp.AuthenticateAsync(
             _options.Value.From,
             _options.Value.Password,
             cancellationToken);
-        
+
         await smtp.SendAsync(email, cancellationToken);
         await smtp.DisconnectAsync(true, cancellationToken);
     }

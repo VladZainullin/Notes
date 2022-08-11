@@ -6,13 +6,13 @@ using Notes.Data.Exceptions;
 namespace Notes.Data.Middlewares;
 
 /// <summary>
-/// Промежуточное програмное обеспечение для преобразования
-/// содержимого исключений в приемлемый для пользователя вид
+///     Промежуточное програмное обеспечение для преобразования
+///     содержимого исключений в приемлемый для пользователя вид
 /// </summary>
 public sealed class ExceptionMiddleware : IMiddleware
 {
     /// <summary>
-    /// Метод обработки запроса
+    ///     Метод обработки запроса
     /// </summary>
     /// <param name="context">Контекст запроса</param>
     /// <param name="next">Делегат перемещения в следующее промежуточное програмное обеспечение</param>
@@ -25,29 +25,29 @@ public sealed class ExceptionMiddleware : IMiddleware
         catch (BadRequestException e)
         {
             await SetExceptionResult(
-                context, 
+                context,
                 HttpStatusCode.BadRequest,
                 e.Message);
         }
         catch (NotFoundException e)
         {
             await SetExceptionResult(
-                context, 
+                context,
                 HttpStatusCode.NotFound,
                 e.Message);
         }
         catch (Exception)
         {
             await SetExceptionResult(
-                context, 
+                context,
                 HttpStatusCode.InternalServerError,
                 "Ошибка сервера");
         }
     }
 
     /// <summary>
-    /// Метод преобразования исключительной
-    /// ситуации в приемлемый для пользователя вид
+    ///     Метод преобразования исключительной
+    ///     ситуации в приемлемый для пользователя вид
     /// </summary>
     /// <param name="context">Контекст запроса</param>
     /// <param name="statusCode">Статус код запроса</param>

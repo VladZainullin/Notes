@@ -6,13 +6,13 @@ using Notes.Data.Features.NoteLabels.Queries.GetNoteLabels;
 namespace Notes.Web.Controllers;
 
 /// <summary>
-/// Контроллер ярлыков заметки
+///     Контроллер ярлыков заметки
 /// </summary>
 [Route("api/notes/{noteId:int}/labels")]
 public sealed class NoteLabelController : Controller
 {
     /// <summary>
-    /// Запрос на получение ярлыков заметки
+    ///     Запрос на получение ярлыков заметки
     /// </summary>
     /// <param name="noteId">Id заметки</param>
     /// <param name="cancellationToken">Токен отмены запроса</param>
@@ -26,9 +26,9 @@ public sealed class NoteLabelController : Controller
             new GetNoteLabelsQuery(noteId),
             cancellationToken));
     }
-    
+
     /// <summary>
-    /// Команда добавления ярлыка для заметки
+    ///     Команда добавления ярлыка для заметки
     /// </summary>
     /// <param name="noteId">Id заметки</param>
     /// <param name="labelId">Id ярлыка</param>
@@ -44,12 +44,12 @@ public sealed class NoteLabelController : Controller
                 noteId,
                 labelId),
             cancellationToken);
-        
+
         return NoContent();
     }
-    
+
     /// <summary>
-    /// Команда удаления ярлыка заметки
+    ///     Команда удаления ярлыка заметки
     /// </summary>
     /// <param name="noteId">Id заметки</param>
     /// <param name="labelId">Id ярлыка</param>
@@ -65,7 +65,7 @@ public sealed class NoteLabelController : Controller
                 noteId,
                 labelId),
             cancellationToken);
-        
+
         return NoContent();
     }
 }

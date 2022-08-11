@@ -23,6 +23,7 @@ public sealed class Label : IHasHistory<LabelHistory>
     public ICollection<NoteLabel> NoteLabels { get; set; } = new List<NoteLabel>();
 
     public IReadOnlyCollection<LabelHistory> Histories { get; } = new List<LabelHistory>();
+
     public LabelHistory Access(IHasHistoryVisitor visitor)
     {
         return visitor.Visit(this);

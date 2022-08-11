@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Notes.Data.Services;
 using Notes.Data.Services.Emails;
 
 namespace Notes.Web.Controllers;

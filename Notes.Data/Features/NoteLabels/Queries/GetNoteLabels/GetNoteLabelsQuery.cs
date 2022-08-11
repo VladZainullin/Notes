@@ -6,7 +6,7 @@ using Notes.Core.Entities;
 
 namespace Notes.Data.Features.NoteLabels.Queries.GetNoteLabels;
 
-public sealed record GetNoteLabelsQuery(int NoteId) : 
+public sealed record GetNoteLabelsQuery(int NoteId) :
     IRequest<IEnumerable<GetNoteLabelsDto>>;
 
 internal sealed class GetNoteLabelsHandler :
@@ -22,7 +22,7 @@ internal sealed class GetNoteLabelsHandler :
         _context = context;
         _provider = provider;
     }
-    
+
     public async Task<IEnumerable<GetNoteLabelsDto>> Handle(
         GetNoteLabelsQuery request,
         CancellationToken cancellationToken)

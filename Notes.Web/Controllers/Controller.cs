@@ -7,6 +7,6 @@ namespace Notes.Web.Controllers;
 public class Controller : ControllerBase
 {
     protected IMediator Mediator => HttpContext.RequestServices.GetService<IMediator>()
-                                 ??
-                                 throw new NullReferenceException();
+                                    ??
+                                    throw new NullReferenceException();
 }

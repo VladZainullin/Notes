@@ -10,7 +10,7 @@ public sealed record DeleteNoteLabelCommand(
     int NoteId,
     int LabelId) : IRequest;
 
-internal sealed class DeleteNoteLabelHandler : 
+internal sealed class DeleteNoteLabelHandler :
     AsyncRequestHandler<DeleteNoteLabelCommand>
 {
     private readonly DbContext _context;
@@ -49,10 +49,9 @@ internal sealed class DeleteNoteLabelHandler :
             .AnyAsync(nl =>
                     nl.LabelId == request.LabelId
                     &&
-                    nl.NoteId == request.NoteId, 
+                    nl.NoteId == request.NoteId,
                 cancellationToken);
 
         return exists;
     }
 }
-

@@ -10,7 +10,7 @@ public sealed record CreateNoteLabelCommand(
     int NoteId,
     int LabelId) : IRequest;
 
-internal sealed class CreateNoteLabelHandler : 
+internal sealed class CreateNoteLabelHandler :
     AsyncRequestHandler<CreateNoteLabelCommand>
 {
     private readonly DbContext _context;
@@ -39,7 +39,7 @@ internal sealed class CreateNoteLabelHandler :
             cancellationToken);
         if (!labelExists)
             throw new BadRequestException("Ярлык не найден!");
-        
+
         var noteLabelExists = await IsExistsNoteLabelsAsync(
             request,
             cancellationToken);
@@ -62,7 +62,7 @@ internal sealed class CreateNoteLabelHandler :
 
         return exists;
     }
-    
+
     private async Task<bool> IsExistsLabelAsync(
         int noteId,
         CancellationToken cancellationToken)
@@ -83,10 +83,9 @@ internal sealed class CreateNoteLabelHandler :
             .AnyAsync(nl =>
                     nl.LabelId == request.LabelId
                     &&
-                    nl.NoteId == request.NoteId, 
+                    nl.NoteId == request.NoteId,
                 cancellationToken);
 
         return exists;
     }
 }
-

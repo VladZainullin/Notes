@@ -8,13 +8,13 @@ using Notes.Data.Features.Labels.Queries.GetLabels;
 namespace Notes.Web.Controllers;
 
 /// <summary>
-/// Контроллер ярлыков
+///     Контроллер ярлыков
 /// </summary>
 [Route("api/labels")]
 public sealed class LabelController : Controller
 {
     /// <summary>
-    /// Запрос на получение всех ярлыков
+    ///     Запрос на получение всех ярлыков
     /// </summary>
     /// <param name="cancellationToken"></param>
     /// <returns>Ярлыки</returns>
@@ -26,7 +26,7 @@ public sealed class LabelController : Controller
     }
 
     /// <summary>
-    /// Запрос на получение ярлыка по id
+    ///     Запрос на получение ярлыка по id
     /// </summary>
     /// <param name="labelId">Id ярлыка</param>
     /// <param name="cancellationToken">Токен отмены запроса</param>
@@ -40,7 +40,7 @@ public sealed class LabelController : Controller
     }
 
     /// <summary>
-    /// Запрос на создание ярлыка
+    ///     Запрос на создание ярлыка
     /// </summary>
     /// <param name="dto">Данные ярлыка</param>
     /// <param name="cancellationToken">Токен отмены запроса</param>
@@ -65,7 +65,7 @@ public sealed class LabelController : Controller
     }
 
     /// <summary>
-    /// Запрос на обновление ярлыка
+    ///     Запрос на обновление ярлыка
     /// </summary>
     /// <param name="labelId">Id ярлыка</param>
     /// <param name="dto">Обновлённые данные</param>
@@ -82,7 +82,7 @@ public sealed class LabelController : Controller
     }
 
     /// <summary>
-    /// Запрос на удаление ярлыка
+    ///     Запрос на удаление ярлыка
     /// </summary>
     /// <param name="labelId">Id ярлыка</param>
     /// <param name="cancellationToken">Токен отмкены запроса</param>
