@@ -5,7 +5,8 @@ namespace Notes.Core.Entities;
 /// <summary>
 ///     Заметка
 /// </summary>
-public sealed class Note : IHasHistory<NoteHistory>
+public sealed class Note : 
+    IHasHistory<NoteHistory>
 {
     /// <summary>
     ///     Id заметки

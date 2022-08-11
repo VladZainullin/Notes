@@ -96,12 +96,6 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-#region Hangfire
-
-app.UseHangfireDashboard();
-
-#endregion
-
 #region Serilog
 
 app.UseSerilogRequestLogging();
@@ -137,5 +131,11 @@ app.UseMiddleware<LoggerMiddleware>();
 #endregion
 
 app.MapControllers();
+
+#region Hangfire
+
+app.UseHangfireDashboard();
+
+#endregion
 
 app.Run();
