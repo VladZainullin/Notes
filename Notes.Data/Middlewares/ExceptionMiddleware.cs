@@ -5,8 +5,17 @@ using Notes.Data.Exceptions;
 
 namespace Notes.Data.Middlewares;
 
+/// <summary>
+/// Промежуточное програмное обеспечение для преобразования
+/// содержимого исключений в приемлемый для пользователя вид
+/// </summary>
 public sealed class ExceptionMiddleware : IMiddleware
 {
+    /// <summary>
+    /// Метод обработки запроса
+    /// </summary>
+    /// <param name="context">Контекст запроса</param>
+    /// <param name="next">Делегат перемещения в следующее промежуточное програмное обеспечение</param>
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)
     {
         try
@@ -15,28 +24,35 @@ public sealed class ExceptionMiddleware : IMiddleware
         }
         catch (BadRequestException e)
         {
-            await GetExceptionResult(
+            await SetExceptionResult(
                 context, 
                 HttpStatusCode.BadRequest,
                 e.Message);
         }
         catch (NotFoundException e)
         {
-            await GetExceptionResult(
+            await SetExceptionResult(
                 context, 
                 HttpStatusCode.NotFound,
                 e.Message);
         }
         catch (Exception)
         {
-            await GetExceptionResult(
+            await SetExceptionResult(
                 context, 
                 HttpStatusCode.InternalServerError,
                 "Ошибка сервера");
         }
     }
 
-    private static async Task GetExceptionResult(
+    /// <summary>
+    /// Метод преобразования исключительной
+    /// ситуации в приемлемый для пользователя вид
+    /// </summary>
+    /// <param name="context">Контекст запроса</param>
+    /// <param name="statusCode">Статус код запроса</param>
+    /// <param name="message">Сообщение для пользователя</param>
+    private static async Task SetExceptionResult(
         HttpContext context,
         HttpStatusCode statusCode,
         string message)
