@@ -1,4 +1,6 @@
 using System.Reflection;
+using Hangfire;
+using Hangfire.MemoryStorage;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Notes.Data.Contexts;
@@ -73,6 +75,13 @@ builder.Services.AddScoped<DbContext, AppDbContext>();
 
 #endregion
 
+#region Hangfire
+
+builder.Services.AddHangfire(x => { x.UseMemoryStorage(); });
+builder.Services.AddHangfireServer();
+
+#endregion
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -87,6 +96,12 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+#region Hangfire
+
+app.UseHangfireDashboard();
+
+#endregion
+
 #region Serilog
 
 app.UseSerilogRequestLogging();
@@ -96,9 +111,18 @@ app.UseSerilogRequestLogging();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    #region Swagger
+
     app.UseSwagger();
     app.UseSwaggerUI();
+
+    #endregion
+
+    #region Mini profiler
+
     app.UseMiniProfiler();
+
+    #endregion
 }
 
 app.UseHttpsRedirection();

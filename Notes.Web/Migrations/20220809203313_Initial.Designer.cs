@@ -12,14 +12,14 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Notes.Web.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220807104835_Добавил историю измнений label")]
-    partial class Добавилисториюизмненийlabel
+    [Migration("20220809203313_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.7")
+                .HasAnnotation("ProductVersion", "6.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -49,9 +49,12 @@ namespace Notes.Web.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("DateOfModification")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<int>("LabelId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("State")
                         .HasColumnType("integer");
 
                     b.Property<string>("Title")
@@ -83,6 +86,36 @@ namespace Notes.Web.Migrations
                     b.ToTable("Notes");
                 });
 
+            modelBuilder.Entity("Notes.Core.Entities.NoteHistory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Body")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("DateOfModification")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("Header")
+                        .HasColumnType("text");
+
+                    b.Property<int>("NoteId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("State")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NoteId");
+
+                    b.ToTable("NoteHistory");
+                });
+
             modelBuilder.Entity("Notes.Core.Entities.NoteLabel", b =>
                 {
                     b.Property<int>("LabelId")
@@ -107,6 +140,17 @@ namespace Notes.Web.Migrations
                         .IsRequired();
 
                     b.Navigation("Label");
+                });
+
+            modelBuilder.Entity("Notes.Core.Entities.NoteHistory", b =>
+                {
+                    b.HasOne("Notes.Core.Entities.Note", "Note")
+                        .WithMany("Histories")
+                        .HasForeignKey("NoteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Note");
                 });
 
             modelBuilder.Entity("Notes.Core.Entities.NoteLabel", b =>
@@ -137,6 +181,8 @@ namespace Notes.Web.Migrations
 
             modelBuilder.Entity("Notes.Core.Entities.Note", b =>
                 {
+                    b.Navigation("Histories");
+
                     b.Navigation("NoteLabels");
                 });
 #pragma warning restore 612, 618
