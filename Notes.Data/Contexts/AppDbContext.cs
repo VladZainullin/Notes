@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -77,7 +78,8 @@ public sealed class AppDbContext : DbContext
             .Entries<IHasHistory<IHistory>>()
             .Select(h => h
                 .Entity
-                .Access(new HasHistoryVisitor(h.State)));
+                .Access(new HasHistoryVisitor(h.State)))
+            .ToImmutableList();
 
         await AddRangeAsync(histories, cancellationToken);
 
