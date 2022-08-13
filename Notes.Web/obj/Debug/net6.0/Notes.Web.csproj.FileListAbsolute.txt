@@ -76,3 +76,8 @@
 /Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/zh-TW/Hangfire.Core.resources.dll
 /Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/zh/Hangfire.Core.resources.dll
 /Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/Hangfire.MemoryStorage.dll
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/Microsoft.IdentityModel.Logging.dll
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/Microsoft.IdentityModel.Tokens.dll
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/System.IdentityModel.Tokens.Jwt.dll
