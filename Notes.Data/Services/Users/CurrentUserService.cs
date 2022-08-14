@@ -2,14 +2,26 @@ using Microsoft.AspNetCore.Http;
 
 namespace Notes.Data.Services.Users;
 
-public class CurrentUserService
+public sealed class CurrentUserService
 {
-    private readonly HttpContext _context;
+    private readonly HttpContextAccessor _context;
 
-    public CurrentUserService(HttpContext context)
+    public CurrentUserService(HttpContextAccessor context)
     {
         _context = context;
     }
 
-    public int Id => int.Parse(_context.User.Claims.FirstOrDefault(c => c.Type == "Id")!.Value);
+    public int Id => int.Parse(_context
+        .HttpContext!
+        .User
+        .Claims
+        .FirstOrDefault(c => c.Type == "Id")!
+        .Value);
+
+    public string? Login => _context
+        .HttpContext!
+        .User
+        .Claims
+        .FirstOrDefault(c => c.Type == "Login")!
+        .Value;
 }
