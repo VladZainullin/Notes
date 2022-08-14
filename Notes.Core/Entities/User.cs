@@ -16,6 +16,8 @@ public sealed class User
 
     public DateTime DateOfBirth { get; set; }
 
+    public int Age => DateTime.Now.Year - DateOfBirth.Year;
+
     public string? Email { get; set; }
 
     public string? Password { get; set; }

@@ -8,6 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 using Notes.Data.Contexts;
 using Notes.Data.Middlewares;
 using Notes.Data.Services.Emails;
+using Notes.Data.Services.JwtTokenServices;
 using Notes.Data.Services.Users;
 using Serilog;
 using Serilog.Events;
@@ -41,6 +42,7 @@ builder.Services
 builder.Services.AddScoped<LoggerMiddleware>();
 builder.Services.AddScoped<ExceptionMiddleware>();
 builder.Services.AddScoped<EmailService>();
+builder.Services.AddScoped<JwtSecurityTokenService>();
 builder.Services.AddScoped<CurrentUserService>();
 builder.Services.AddScoped<HttpContextAccessor>();
 
