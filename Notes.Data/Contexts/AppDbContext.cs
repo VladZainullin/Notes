@@ -30,41 +30,13 @@ public sealed class AppDbContext : DbContext
         _configuration = configuration;
     }
 
-    #region Notes
-
-    /// <summary>
-    ///     Заметки
-    /// </summary>
-    public DbSet<Note> Notes { get; set; } = null!;
-
-    /// <summary>
-    /// История заметок
-    /// </summary>
-    public DbSet<NoteHistory> NoteHistories { get; set; } = null!;
-
-    #endregion
-
-    #region Labels
-
-    /// <summary>
-    ///     Ярлыки
-    /// </summary>
-    public DbSet<Label> Labels { get; set; } = null!;
-
-    /// <summary>
-    /// История заметок
-    /// </summary>
-    public DbSet<LabelHistory> LabelHistories { get; set; } = null!;
-
-    #endregion
-
     /// <summary>
     ///     Ярлыки заметок
     /// </summary>
     public DbSet<NoteLabel> NoteLabels { get; set; } = null!;
 
     /// <summary>
-    /// Пользователи
+    ///     Пользователи
     /// </summary>
     public DbSet<User> Users { get; set; } = null!;
 
@@ -108,4 +80,32 @@ public sealed class AppDbContext : DbContext
 
         return await base.SaveChangesAsync(cancellationToken);
     }
+
+    #region Notes
+
+    /// <summary>
+    ///     Заметки
+    /// </summary>
+    public DbSet<Note> Notes { get; set; } = null!;
+
+    /// <summary>
+    ///     История заметок
+    /// </summary>
+    public DbSet<NoteHistory> NoteHistories { get; set; } = null!;
+
+    #endregion
+
+    #region Labels
+
+    /// <summary>
+    ///     Ярлыки
+    /// </summary>
+    public DbSet<Label> Labels { get; set; } = null!;
+
+    /// <summary>
+    ///     История заметок
+    /// </summary>
+    public DbSet<LabelHistory> LabelHistories { get; set; } = null!;
+
+    #endregion
 }

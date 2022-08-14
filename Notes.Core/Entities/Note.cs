@@ -24,17 +24,17 @@ public sealed class Note :
     public string? Body { get; set; }
 
     /// <summary>
-    /// Флаг закреплена/откреплена
+    ///     Флаг закреплена/откреплена
     /// </summary>
     public bool IsPinned { get; set; }
 
     /// <summary>
-    /// Id пользователя
+    ///     Id пользователя
     /// </summary>
     public int UserId { get; set; }
-    
+
     /// <summary>
-    /// Пользователь
+    ///     Пользователь
     /// </summary>
     public User? User { get; set; }
 

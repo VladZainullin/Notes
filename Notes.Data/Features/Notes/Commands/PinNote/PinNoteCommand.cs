@@ -20,7 +20,7 @@ internal sealed class PinNoteHandler : AsyncRequestHandler<PinNoteCommand>
         _context = context;
         _currentUserService = currentUserService;
     }
-    
+
     protected override async Task Handle(
         PinNoteCommand request,
         CancellationToken cancellationToken)
@@ -34,12 +34,12 @@ internal sealed class PinNoteHandler : AsyncRequestHandler<PinNoteCommand>
         var access = note.Id == _currentUserService.Id;
         if (access)
             throw new BadRequestException("Заметка принадлежит другому пользователю");
-            
+
         note.IsPinned = true;
 
         await _context.SaveChangesAsync(cancellationToken);
     }
-    
+
     private async Task<bool> IsExistsNoteAsync(
         int noteId,
         CancellationToken cancellationToken)

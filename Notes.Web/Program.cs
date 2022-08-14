@@ -126,10 +126,7 @@ builder.Services
 
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("register", policy =>
-    {
-        policy.RequireAuthenticatedUser();
-    });
+    options.AddPolicy("register", policy => { policy.RequireAuthenticatedUser(); });
 });
 
 #endregion

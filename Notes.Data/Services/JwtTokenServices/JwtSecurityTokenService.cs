@@ -15,11 +15,11 @@ public sealed class JwtSecurityTokenService
     {
         _configuration = configuration;
     }
-    
+
     public string Create(User user)
     {
         var claims = CreateClaims(user);
-        
+
         var securityKey = GetSecurityKey();
 
         var signingCredentials = GetSigningCredentials(securityKey);
@@ -31,8 +31,9 @@ public sealed class JwtSecurityTokenService
             DateTime.Now,
             DateTime.Now.AddHours(1),
             signingCredentials);
-        
-        return new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);;
+
+        return new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
+        ;
     }
 
     private static SigningCredentials GetSigningCredentials(SecurityKey securityKey)
@@ -40,7 +41,7 @@ public sealed class JwtSecurityTokenService
         var signingCredentials = new SigningCredentials(
             securityKey,
             SecurityAlgorithms.HmacSha256);
-        
+
         return signingCredentials;
     }
 
@@ -48,10 +49,10 @@ public sealed class JwtSecurityTokenService
     {
         var symmetricSecurityKey = new SymmetricSecurityKey(
             Encoding.ASCII.GetBytes(_configuration["Authentications:Security"]));
-        
+
         return symmetricSecurityKey;
     }
-    
+
     private static IEnumerable<Claim> CreateClaims(User user)
     {
         var claims = new Claim[]

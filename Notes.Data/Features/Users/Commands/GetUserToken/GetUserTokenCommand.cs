@@ -13,9 +13,7 @@ public sealed record GetUserTokenCommand(GetUserTokenDto Dto) : IRequest<string>
 internal sealed class GetUserTokenHandler : IRequestHandler<GetUserTokenCommand, string>
 {
     private readonly DbContext _context;
-    private readonly CurrentUserService _currentUserService;
     private readonly JwtSecurityTokenService _jwtSecurityTokenService;
-    private readonly IMapper _mapper;
 
     public GetUserTokenHandler(
         DbContext context,
@@ -24,11 +22,9 @@ internal sealed class GetUserTokenHandler : IRequestHandler<GetUserTokenCommand,
         IMapper mapper)
     {
         _context = context;
-        _currentUserService = currentUserService;
         _jwtSecurityTokenService = jwtSecurityTokenService;
-        _mapper = mapper;
     }
-    
+
     public async Task<string> Handle(
         GetUserTokenCommand request,
         CancellationToken cancellationToken)
@@ -38,7 +34,7 @@ internal sealed class GetUserTokenHandler : IRequestHandler<GetUserTokenCommand,
             cancellationToken);
         if (!exists)
             throw new BadRequestException("Аккаунт не зарегистрирован");
-        
+
         var user = await GetUserAsync(request.Dto.Email, cancellationToken);
 
         var access = user.Password == request.Dto.Password;

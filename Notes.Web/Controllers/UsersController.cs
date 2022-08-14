@@ -14,7 +14,7 @@ public sealed class UsersController : Controller
     {
         return Ok(await Mediator.Send(new GetUserTokenCommand(dto), cancellationToken));
     }
-    
+
     [HttpPost]
     public async Task<IActionResult> RegisterUserAsync(
         [FromBody] CreateUserDto dto,

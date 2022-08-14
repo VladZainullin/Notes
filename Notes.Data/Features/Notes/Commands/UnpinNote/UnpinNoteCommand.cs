@@ -20,7 +20,7 @@ internal sealed class UnpinNoteHandler : AsyncRequestHandler<UnpinNoteCommand>
         _context = context;
         _currentUserService = currentUserService;
     }
-    
+
     protected override async Task Handle(
         UnpinNoteCommand request,
         CancellationToken cancellationToken)
@@ -33,12 +33,12 @@ internal sealed class UnpinNoteHandler : AsyncRequestHandler<UnpinNoteCommand>
         var access = note.Id == _currentUserService.Id;
         if (!access)
             throw new BadRequestException("Заметка принадлежит другому пользователю");
-        
+
         note.IsPinned = false;
 
         await _context.SaveChangesAsync(cancellationToken);
     }
-    
+
     private async Task<bool> IsExistsNoteAsync(
         int noteId,
         CancellationToken cancellationToken)
