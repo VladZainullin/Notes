@@ -3,6 +3,7 @@ using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Notes.Core.Entities;
+using Notes.Data.Services.Users;
 
 namespace Notes.Data.Features.Labels.Queries.GetLabels;
 
@@ -15,13 +16,16 @@ internal sealed class GetLabelHandler :
     IRequestHandler<GetLabelsQuery, IEnumerable<GetLabelsDto>>
 {
     private readonly DbContext _context;
+    private readonly CurrentUserService _currentUserService;
     private readonly IConfigurationProvider _provider;
 
     public GetLabelHandler(
         DbContext context,
+        CurrentUserService currentUserService,
         IConfigurationProvider provider)
     {
         _context = context;
+        _currentUserService = currentUserService;
         _provider = provider;
     }
 
@@ -31,6 +35,7 @@ internal sealed class GetLabelHandler :
     {
         var dtos = await _context
             .Set<Label>()
+            .Where(label => label.UserId == _currentUserService.Id)
             .ProjectTo<GetLabelsDto>(_provider)
             .ToListAsync(cancellationToken);
 

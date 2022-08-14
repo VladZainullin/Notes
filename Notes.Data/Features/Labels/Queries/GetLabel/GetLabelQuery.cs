@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Notes.Core.Entities;
 using Notes.Data.Exceptions;
+using Notes.Data.Services.Users;
 
 namespace Notes.Data.Features.Labels.Queries.GetLabel;
 
@@ -22,13 +23,16 @@ internal sealed class GetLabelHandler :
     IRequestHandler<GetLabelQuery, GetLabelDto>
 {
     private readonly DbContext _context;
+    private readonly CurrentUserService _currentUserService;
     private readonly IConfigurationProvider _provider;
 
     public GetLabelHandler(
         DbContext context,
+        CurrentUserService currentUserService,
         IConfigurationProvider provider)
     {
         _context = context;
+        _currentUserService = currentUserService;
         _provider = provider;
     }
 
@@ -39,9 +43,16 @@ internal sealed class GetLabelHandler :
         var exists = await IsExistsLabelAsync(
             request.LabelId,
             cancellationToken);
-
         if (!exists)
             throw new NotFoundException("Ярлык не найден");
+
+        var access = await _context
+            .Set<Label>()
+            .AnyAsync(label => label.Id == request.LabelId
+                               &&
+                               label.UserId == _currentUserService.Id, cancellationToken);
+        if (!access)
+            throw new BadRequestException("Ярлык принадлежит другому пользователю");
 
         var dto = await GetDtoAsync(
             request.LabelId,

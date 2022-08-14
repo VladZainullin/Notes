@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Notes.Core.Entities;
 using Notes.Data.Exceptions;
+using Notes.Data.Services.Users;
 
 namespace Notes.Data.Features.Notes.Commands.UpdateNote;
 
@@ -11,13 +12,16 @@ public sealed record UpdateNoteCommand(int NoteId, UpdateNoteDto Dto) : IRequest
 internal sealed class UpdateNoteHandler : AsyncRequestHandler<UpdateNoteCommand>
 {
     private readonly DbContext _context;
+    private readonly CurrentUserService _currentUserService;
     private readonly IMapper _mapper;
 
     public UpdateNoteHandler(
         DbContext context,
+        CurrentUserService currentUserService,
         IMapper mapper)
     {
         _context = context;
+        _currentUserService = currentUserService;
         _mapper = mapper;
     }
 
@@ -35,6 +39,10 @@ internal sealed class UpdateNoteHandler : AsyncRequestHandler<UpdateNoteCommand>
         var note = await GetNoteAsync(
             request.NoteId,
             cancellationToken);
+
+        var access = note.UserId == _currentUserService.Id;
+        if (!access)
+            throw new BadRequestException("Заметка принадлежит другому пользователю");
 
         _mapper.Map(request.Dto, note);
         await _context.SaveChangesAsync(cancellationToken);

@@ -2,6 +2,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Notes.Core.Entities;
 using Notes.Data.Exceptions;
+using Notes.Data.Services.Users;
 
 namespace Notes.Data.Features.Labels.Commands.DeleteLabel;
 
@@ -10,10 +11,14 @@ public sealed record DeleteLabelCommand(int LabelId) : IRequest;
 internal sealed class DeleteLabelHandler : AsyncRequestHandler<DeleteLabelCommand>
 {
     private readonly DbContext _context;
+    private readonly CurrentUserService _currentUserService;
 
-    public DeleteLabelHandler(DbContext context)
+    public DeleteLabelHandler(
+        DbContext context,
+        CurrentUserService currentUserService)
     {
         _context = context;
+        _currentUserService = currentUserService;
     }
 
     protected override async Task Handle(
@@ -29,6 +34,11 @@ internal sealed class DeleteLabelHandler : AsyncRequestHandler<DeleteLabelComman
         var label = await GetLabelAsync(
             request.LabelId,
             cancellationToken);
+
+        var access = label.UserId == _currentUserService.Id;
+        if (!access)
+            throw new BadRequestException("Ярлык принадлежит другому пользователю");
+        
         _context.Remove(label);
 
         await _context.SaveChangesAsync(cancellationToken);
@@ -50,6 +60,7 @@ internal sealed class DeleteLabelHandler : AsyncRequestHandler<DeleteLabelComman
     {
         return await _context
             .Set<Label>()
+            .AsTracking()
             .SingleAsync(label => label.Id == labelId, cancellationToken);
     }
 }

@@ -2,6 +2,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Notes.Core.Entities;
 using Notes.Data.Exceptions;
+using Notes.Data.Services.Users;
 
 namespace Notes.Data.Features.Notes.Commands.UnpinNote;
 
@@ -10,10 +11,14 @@ public sealed record UnpinNoteCommand(int NoteId) : IRequest;
 internal sealed class UnpinNoteHandler : AsyncRequestHandler<UnpinNoteCommand>
 {
     private readonly DbContext _context;
+    private readonly CurrentUserService _currentUserService;
 
-    public UnpinNoteHandler(DbContext context)
+    public UnpinNoteHandler(
+        DbContext context,
+        CurrentUserService currentUserService)
     {
         _context = context;
+        _currentUserService = currentUserService;
     }
     
     protected override async Task Handle(
@@ -22,12 +27,14 @@ internal sealed class UnpinNoteHandler : AsyncRequestHandler<UnpinNoteCommand>
     {
         var exists = await IsExistsNoteAsync(request.NoteId, cancellationToken);
         if (!exists)
-        {
             throw new BadRequestException("Попытка закрепить несуществующую заметку");
-        }
-        
+
         var note = await GetNoteAsync(request.NoteId, cancellationToken);
-        note.IsPinned = true;
+        var access = note.Id == _currentUserService.Id;
+        if (!access)
+            throw new BadRequestException("Заметка принадлежит другому пользователю");
+        
+        note.IsPinned = false;
 
         await _context.SaveChangesAsync(cancellationToken);
     }

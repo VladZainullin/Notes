@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Notes.Core.Entities;
 using Notes.Data.Exceptions;
+using Notes.Data.Services.Users;
 
 namespace Notes.Data.Features.Notes.Queries.GetNote;
 
@@ -12,13 +13,16 @@ internal sealed class GetNoteHandler :
     IRequestHandler<GetNoteQuery, GetNoteDto>
 {
     private readonly DbContext _context;
+    private readonly CurrentUserService _currentUserService;
     private readonly IMapper _mapper;
 
     public GetNoteHandler(
         DbContext context,
+        CurrentUserService currentUserService,
         IMapper mapper)
     {
         _context = context;
+        _currentUserService = currentUserService;
         _mapper = mapper;
     }
 
@@ -31,6 +35,11 @@ internal sealed class GetNoteHandler :
             throw new NotFoundException("Заметка не найдена");
 
         var note = await GetNoteAsync(request.NoteId, cancellationToken);
+
+        var access = note.UserId == _currentUserService.Id;
+
+        if (!access)
+            throw new BadRequestException("Заметка принадлежит другому пользователю");
 
         return _mapper.Map<GetNoteDto>(note);
     }
