@@ -62,7 +62,7 @@ namespace Notes.Web.Migrations
 
                     b.HasIndex("LabelId");
 
-                    b.ToTable("LabelHistory");
+                    b.ToTable("LabelHistories");
                 });
 
             modelBuilder.Entity("Notes.Core.Entities.Note", b =>
@@ -82,12 +82,7 @@ namespace Notes.Web.Migrations
                     b.Property<bool>("IsPinned")
                         .HasColumnType("boolean");
 
-                    b.Property<int>("NoteStateId")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("NoteStateId");
 
                     b.ToTable("Notes");
                 });
@@ -119,7 +114,7 @@ namespace Notes.Web.Migrations
 
                     b.HasIndex("NoteId");
 
-                    b.ToTable("NoteHistory");
+                    b.ToTable("NoteHistories");
                 });
 
             modelBuilder.Entity("Notes.Core.Entities.NoteLabel", b =>
@@ -137,7 +132,7 @@ namespace Notes.Web.Migrations
                     b.ToTable("NoteLabels");
                 });
 
-            modelBuilder.Entity("Notes.Core.Entities.NoteState", b =>
+            modelBuilder.Entity("Notes.Core.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -145,32 +140,27 @@ namespace Notes.Web.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("Email")
                         .HasColumnType("text");
 
-                    b.Property<int>("State")
-                        .HasColumnType("integer");
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Patronymic")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Surname")
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.ToTable("NoteStates");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("NoteState");
-                });
-
-            modelBuilder.Entity("Notes.Core.Entities.ArchiveState", b =>
-                {
-                    b.HasBaseType("Notes.Core.Entities.NoteState");
-
-                    b.HasDiscriminator().HasValue("ArchiveState");
-                });
-
-            modelBuilder.Entity("Notes.Core.Entities.CreatedNoteState", b =>
-                {
-                    b.HasBaseType("Notes.Core.Entities.NoteState");
-
-                    b.HasDiscriminator().HasValue("CreatedNoteState");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Notes.Core.Entities.LabelHistory", b =>
@@ -182,17 +172,6 @@ namespace Notes.Web.Migrations
                         .IsRequired();
 
                     b.Navigation("Label");
-                });
-
-            modelBuilder.Entity("Notes.Core.Entities.Note", b =>
-                {
-                    b.HasOne("Notes.Core.Entities.NoteState", "NoteState")
-                        .WithMany("Notes")
-                        .HasForeignKey("NoteStateId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("NoteState");
                 });
 
             modelBuilder.Entity("Notes.Core.Entities.NoteHistory", b =>
@@ -237,11 +216,6 @@ namespace Notes.Web.Migrations
                     b.Navigation("Histories");
 
                     b.Navigation("NoteLabels");
-                });
-
-            modelBuilder.Entity("Notes.Core.Entities.NoteState", b =>
-                {
-                    b.Navigation("Notes");
                 });
 #pragma warning restore 612, 618
         }

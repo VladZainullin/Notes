@@ -1,8 +1,10 @@
 using System.Reflection;
+using System.Text;
 using Hangfire;
 using Hangfire.MemoryStorage;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Notes.Data.Contexts;
 using Notes.Data.Middlewares;
 using Notes.Data.Services.Emails;
@@ -93,6 +95,38 @@ builder.Services.AddSwaggerGen();
 
 #endregion
 
+#region Jwt bearer
+
+builder.Services
+    .AddAuthentication("Bearer")
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Authentications:Issuer"],
+            ValidAudience = builder.Configuration["Authentications:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.ASCII.GetBytes(builder.Configuration["Authentications:Security"]))
+        };
+    });
+
+#endregion
+
+#region Authentication policy
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("register", policy =>
+    {
+        policy.RequireAuthenticatedUser();
+    });
+});
+
+#endregion
+
 var app = builder.Build();
 
 #region Serilog
@@ -120,7 +154,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+#region Authorization and Authentication
+
+app.UseAuthentication();
 app.UseAuthorization();
+
+#endregion
 
 #region Middlewares
 

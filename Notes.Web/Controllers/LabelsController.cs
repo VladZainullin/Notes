@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Notes.Data.Features.Labels.Commands.CreateLabel;
 using Notes.Data.Features.Labels.Commands.DeleteLabel;
@@ -11,7 +12,8 @@ namespace Notes.Web.Controllers;
 ///     Контроллер ярлыков
 /// </summary>
 [Route("api/labels")]
-public sealed class LabelController : Controller
+[Authorize(Policy = "register")]
+public sealed class LabelsController : Controller
 {
     /// <summary>
     ///     Запрос на получение всех ярлыков

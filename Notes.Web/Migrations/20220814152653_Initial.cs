@@ -39,7 +39,25 @@ namespace Notes.Web.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "LabelHistory",
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    Surname = table.Column<string>(type: "text", nullable: true),
+                    Patronymic = table.Column<string>(type: "text", nullable: true),
+                    DateOfBirth = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    Email = table.Column<string>(type: "text", nullable: true),
+                    Password = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LabelHistories",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -51,9 +69,9 @@ namespace Notes.Web.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LabelHistory", x => x.Id);
+                    table.PrimaryKey("PK_LabelHistories", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_LabelHistory_Labels_LabelId",
+                        name: "FK_LabelHistories_Labels_LabelId",
                         column: x => x.LabelId,
                         principalTable: "Labels",
                         principalColumn: "Id",
@@ -61,7 +79,7 @@ namespace Notes.Web.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "NoteHistory",
+                name: "NoteHistories",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -74,9 +92,9 @@ namespace Notes.Web.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_NoteHistory", x => x.Id);
+                    table.PrimaryKey("PK_NoteHistories", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_NoteHistory_Notes_NoteId",
+                        name: "FK_NoteHistories_Notes_NoteId",
                         column: x => x.NoteId,
                         principalTable: "Notes",
                         principalColumn: "Id",
@@ -108,13 +126,13 @@ namespace Notes.Web.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_LabelHistory_LabelId",
-                table: "LabelHistory",
+                name: "IX_LabelHistories_LabelId",
+                table: "LabelHistories",
                 column: "LabelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_NoteHistory_NoteId",
-                table: "NoteHistory",
+                name: "IX_NoteHistories_NoteId",
+                table: "NoteHistories",
                 column: "NoteId");
 
             migrationBuilder.CreateIndex(
@@ -126,13 +144,16 @@ namespace Notes.Web.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "LabelHistory");
+                name: "LabelHistories");
 
             migrationBuilder.DropTable(
-                name: "NoteHistory");
+                name: "NoteHistories");
 
             migrationBuilder.DropTable(
                 name: "NoteLabels");
+
+            migrationBuilder.DropTable(
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Labels");

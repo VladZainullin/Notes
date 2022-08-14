@@ -30,10 +30,21 @@ public sealed class AppDbContext : DbContext
         _configuration = configuration;
     }
 
+    #region Notes
+
     /// <summary>
     ///     Заметки
     /// </summary>
     public DbSet<Note> Notes { get; set; } = null!;
+
+    /// <summary>
+    /// История заметок
+    /// </summary>
+    public DbSet<NoteHistory> NoteHistories { get; set; } = null!;
+
+    #endregion
+
+    #region Labels
 
     /// <summary>
     ///     Ярлыки
@@ -41,9 +52,21 @@ public sealed class AppDbContext : DbContext
     public DbSet<Label> Labels { get; set; } = null!;
 
     /// <summary>
+    /// История заметок
+    /// </summary>
+    public DbSet<LabelHistory> LabelHistories { get; set; } = null!;
+
+    #endregion
+
+    /// <summary>
     ///     Ярлыки заметок
     /// </summary>
     public DbSet<NoteLabel> NoteLabels { get; set; } = null!;
+
+    /// <summary>
+    /// Пользователи
+    /// </summary>
+    public DbSet<User> Users { get; set; } = null!;
 
     /// <summary>
     ///     Переопределённый метод конфигурации контекста базы данных

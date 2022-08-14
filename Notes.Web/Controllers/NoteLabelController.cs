@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Notes.Data.Features.NoteLabels.Commands.CreateNoteLabel;
 using Notes.Data.Features.NoteLabels.Commands.DeleteNoteLabel;
@@ -9,6 +10,7 @@ namespace Notes.Web.Controllers;
 ///     Контроллер ярлыков заметки
 /// </summary>
 [Route("api/notes/{noteId:int}/labels")]
+[Authorize]
 public sealed class NoteLabelController : Controller
 {
     /// <summary>

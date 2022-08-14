@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Notes.Core.Entities;
-using Org.BouncyCastle.Bcpg;
+using Notes.Data.Exceptions;
 
 namespace Notes.Data.Features.Authentications.Commands.Authenticate;
 
@@ -35,6 +35,15 @@ internal sealed class AuthenticateHandler : IRequestHandler<AuthenticateCommand,
     {
         var user = _mapper.Map<User>(request.Dto);
 
+        var exists = await _context
+            .Set<User>()
+            .AnyAsync(u => u.Email == user.Email, cancellationToken);
+        if (exists)
+            throw new BadRequestException("По данному почтовому ящику уже зарегистрирован аккаунт");
+
+        await _context.AddAsync(user, cancellationToken);
+        await _context.SaveChangesAsync(cancellationToken);
+
         var security = new SymmetricSecurityKey(
             Encoding.ASCII.GetBytes(_configuration["Authentications:Security"]));
 
@@ -44,7 +53,8 @@ internal sealed class AuthenticateHandler : IRequestHandler<AuthenticateCommand,
 
         var claims = new List<Claim>()
         {
-            new("Login", user.Login!),
+            new("Id", user.Id.ToString()),
+            new("Email", user.Email!),
             new("Password", user.Password!)
         };
 

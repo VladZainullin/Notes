@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Notes.Data.Features.Notes.Commands.CreateNote;
 using Notes.Data.Features.Notes.Commands.DeleteNote;
@@ -13,6 +14,7 @@ namespace Notes.Web.Controllers;
 ///     Контроллер заметок
 /// </summary>
 [Route("api/notes")]
+[Authorize]
 public sealed class NotesController : Controller
 {
     /// <summary>
