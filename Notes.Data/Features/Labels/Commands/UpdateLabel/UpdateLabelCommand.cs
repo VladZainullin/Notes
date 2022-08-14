@@ -43,7 +43,7 @@ internal sealed class UpdateLabelHandler :
             cancellationToken);
         var access = label.UserId == _currentUserService.Id;
         if (!access)
-            throw new BadRequestException("Заметка принадлежит другому пользователю");
+            throw new ForbiddenException("Ярлык принадлежит другому пользователю");
 
         _mapper.Map(request.Dto, label);
 

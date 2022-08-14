@@ -52,7 +52,7 @@ internal sealed class GetLabelHandler :
                                &&
                                label.UserId == _currentUserService.Id, cancellationToken);
         if (!access)
-            throw new BadRequestException("Ярлык принадлежит другому пользователю");
+            throw new ForbiddenException("Ярлык принадлежит другому пользователю");
 
         var dto = await GetDtoAsync(
             request.LabelId,

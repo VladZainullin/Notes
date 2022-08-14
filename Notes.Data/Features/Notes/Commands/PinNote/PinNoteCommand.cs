@@ -33,7 +33,7 @@ internal sealed class PinNoteHandler : AsyncRequestHandler<PinNoteCommand>
 
         var access = note.Id == _currentUserService.Id;
         if (access)
-            throw new BadRequestException("Заметка принадлежит другому пользователю");
+            throw new ForbiddenException("Заметка принадлежит другому пользователю");
 
         note.IsPinned = true;
 

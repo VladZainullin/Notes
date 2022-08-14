@@ -58,7 +58,7 @@ public sealed class JwtSecurityTokenService
         var claims = new Claim[]
         {
             new("Id", user.Id.ToString()),
-            new("Email", user.Email!),
+            new(ClaimTypes.Email, user.Email!),
             new("Password", user.Password!)
         };
 

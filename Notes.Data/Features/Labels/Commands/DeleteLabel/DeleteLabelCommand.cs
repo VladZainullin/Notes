@@ -37,7 +37,7 @@ internal sealed class DeleteLabelHandler : AsyncRequestHandler<DeleteLabelComman
 
         var access = label.UserId == _currentUserService.Id;
         if (!access)
-            throw new BadRequestException("Ярлык принадлежит другому пользователю");
+            throw new ForbiddenException("Ярлык принадлежит другому пользователю");
 
         _context.Remove(label);
 

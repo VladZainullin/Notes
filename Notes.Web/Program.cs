@@ -41,9 +41,12 @@ builder.Services
 
 builder.Services.AddScoped<LoggerMiddleware>();
 builder.Services.AddScoped<ExceptionMiddleware>();
+builder.Services.AddScoped<TransactionMiddleware>();
+
 builder.Services.AddScoped<EmailService>();
 builder.Services.AddScoped<JwtSecurityTokenService>();
 builder.Services.AddScoped<CurrentUserService>();
+
 builder.Services.AddScoped<HttpContextAccessor>();
 
 builder.Services.AddHttpContextAccessor();
@@ -169,6 +172,7 @@ app.UseAuthorization();
 
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseMiddleware<LoggerMiddleware>();
+app.UseMiddleware<TransactionMiddleware>();
 
 #endregion
 

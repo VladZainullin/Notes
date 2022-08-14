@@ -42,7 +42,7 @@ internal sealed class CreateNoteLabelHandler :
             request.NoteId, 
             cancellationToken);
         if (!noteAccess)
-            throw new BadRequestException("Заметка принадлежит другому пользователю");
+            throw new ForbiddenException("Заметка принадлежит другому пользователю");
 
         var labelExists = await IsExistsLabelAsync(
             request.LabelId,
@@ -54,7 +54,7 @@ internal sealed class CreateNoteLabelHandler :
             request.LabelId, 
             cancellationToken);
         if (!labelAccess)
-            throw new BadRequestException("Ярлык принадлежит другому пользователю");
+            throw new ForbiddenException("Ярлык принадлежит другому пользователю");
 
         var noteLabelExists = await IsExistsNoteLabelsAsync(
             request,

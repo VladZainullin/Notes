@@ -42,7 +42,7 @@ internal sealed class UpdateNoteHandler : AsyncRequestHandler<UpdateNoteCommand>
 
         var access = note.UserId == _currentUserService.Id;
         if (!access)
-            throw new BadRequestException("Заметка принадлежит другому пользователю");
+            throw new ForbiddenException("Заметка принадлежит другому пользователю");
 
         _mapper.Map(request.Dto, note);
         await _context.SaveChangesAsync(cancellationToken);

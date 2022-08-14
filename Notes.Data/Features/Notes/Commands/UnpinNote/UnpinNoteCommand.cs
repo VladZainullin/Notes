@@ -32,7 +32,7 @@ internal sealed class UnpinNoteHandler : AsyncRequestHandler<UnpinNoteCommand>
         var note = await GetNoteAsync(request.NoteId, cancellationToken);
         var access = note.Id == _currentUserService.Id;
         if (!access)
-            throw new BadRequestException("Заметка принадлежит другому пользователю");
+            throw new ForbiddenException("Заметка принадлежит другому пользователю");
 
         note.IsPinned = false;
 

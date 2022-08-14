@@ -39,7 +39,7 @@ internal sealed class GetNoteHandler :
         var access = note.UserId == _currentUserService.Id;
 
         if (!access)
-            throw new BadRequestException("Заметка принадлежит другому пользователю");
+            throw new ForbiddenException("Заметка принадлежит другому пользователю");
 
         return _mapper.Map<GetNoteDto>(note);
     }

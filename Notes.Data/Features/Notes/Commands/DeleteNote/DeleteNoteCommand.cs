@@ -2,6 +2,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Notes.Core.Entities;
 using Notes.Data.Exceptions;
+using Notes.Data.Services.Users;
 
 namespace Notes.Data.Features.Notes.Commands.DeleteNote;
 
@@ -11,10 +12,14 @@ internal sealed class DeleteNoteHandler :
     AsyncRequestHandler<DeleteNoteCommand>
 {
     private readonly DbContext _context;
+    private readonly CurrentUserService _currentUserService;
 
-    public DeleteNoteHandler(DbContext context)
+    public DeleteNoteHandler(
+        DbContext context,
+        CurrentUserService currentUserService)
     {
         _context = context;
+        _currentUserService = currentUserService;
     }
 
     protected override async Task Handle(
@@ -23,9 +28,12 @@ internal sealed class DeleteNoteHandler :
     {
         var exists = await IsExistsNoteAsync(request.NoteId, cancellationToken);
         if (!exists)
-            throw new BadRequestException("Попытка удаления не существующей заметки");
+            throw new BadRequestException("Попытка удаления не существующей заметки!");
 
         var note = await GetNoteAsync(request.NoteId, cancellationToken);
+        var access = note.UserId == _currentUserService.Id;
+        if (!access)
+            throw new ForbiddenException("Заметка принадлежит другому пользователю!");
 
         _context.Remove(note);
         await _context.SaveChangesAsync(cancellationToken);

@@ -26,14 +26,21 @@ public sealed class ExceptionMiddleware : IMiddleware
         {
             await SetExceptionResult(
                 context,
-                HttpStatusCode.BadRequest,
+                e.StatusCode,
+                e.Message);
+        }
+        catch (ForbiddenException e)
+        {
+            await SetExceptionResult(
+                context,
+                e.StatusCode,
                 e.Message);
         }
         catch (NotFoundException e)
         {
             await SetExceptionResult(
                 context,
-                HttpStatusCode.NotFound,
+                e.StatusCode,
                 e.Message);
         }
         catch (Exception)
