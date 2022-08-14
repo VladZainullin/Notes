@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Notes.Web</name>
+    </assembly>
+    <members>
+        <member name="T:Notes.Web.Controllers.LabelsController">
+            <summary>
+                Контроллер ярлыков
+            </summary>
+        </member>
+        <member name="M:Notes.Web.Controllers.LabelsController.GetLabelsAsync(System.Threading.CancellationToken)">
+            <summary>
+                Запрос на получение всех ярлыков
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns>Ярлыки</returns>
+        </member>
+        <member name="M:Notes.Web.Controllers.LabelsController.GetLabelAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+                Запрос на получение ярлыка по id
+            </summary>
+            <param name="labelId">Id ярлыка</param>
+            <param name="cancellationToken">Токен отмены запроса</param>
+            <returns>Ярлык</returns>
+        </member>
+        <member name="M:Notes.Web.Controllers.LabelsController.CreateLabelAsync(Notes.Data.Features.Labels.Commands.CreateLabel.CreateLabelDto,System.Threading.CancellationToken)">
+            <summary>
+                Запрос на создание ярлыка
+            </summary>
+            <param name="dto">Данные ярлыка</param>
+            <param name="cancellationToken">Токен отмены запроса</param>
+            <returns>Id ярлыка</returns>
+        </member>
+        <member name="M:Notes.Web.Controllers.LabelsController.UpdateLabelAsync(System.Int32,Notes.Data.Features.Labels.Commands.UpdateLabel.UpdateLabelDto,System.Threading.CancellationToken)">
+            <summary>
+                Запрос на обновление ярлыка
+            </summary>
+            <param name="labelId">Id ярлыка</param>
+            <param name="dto">Обновлённые данные</param>
+            <param name="cancellationToken">Токен отмены запроса</param>
+        </member>
+        <member name="M:Notes.Web.Controllers.LabelsController.DeleteLabelAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+                Запрос на удаление ярлыка
+            </summary>
+            <param name="labelId">Id ярлыка</param>
+            <param name="cancellationToken">Токен отмкены запроса</param>
+        </member>
+        <member name="T:Notes.Web.Controllers.NoteLabelController">
+            <summary>
+                Контроллер ярлыков заметки
+            </summary>
+        </member>
+        <member name="M:Notes.Web.Controllers.NoteLabelController.GetNoteLabelsAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+                Запрос на получение ярлыков заметки
+            </summary>
+            <param name="noteId">Id заметки</param>
+            <param name="cancellationToken">Токен отмены запроса</param>
+            <returns>Ярлыки заметки</returns>
+        </member>
+        <member name="M:Notes.Web.Controllers.NoteLabelController.CreateNoteLabelAsync(System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+                Команда добавления ярлыка для заметки
+            </summary>
+            <param name="noteId">Id заметки</param>
+            <param name="labelId">Id ярлыка</param>
+            <param name="cancellationToken">Токен отмены запроса</param>
+        </member>
+        <member name="M:Notes.Web.Controllers.NoteLabelController.DeleteNoteLabelAsync(System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+                Команда удаления ярлыка заметки
+            </summary>
+            <param name="noteId">Id заметки</param>
+            <param name="labelId">Id ярлыка</param>
+            <param name="cancellationToken">Токен отмены запроса</param>
+        </member>
+        <member name="T:Notes.Web.Controllers.NotesController">
+            <summary>
+                Контроллер заметок
+            </summary>
+        </member>
+        <member name="M:Notes.Web.Controllers.NotesController.GetNotesAsync(System.Threading.CancellationToken)">
+            <summary>
+                Запрос на получение всех заметок
+            </summary>
+            <param name="cancellationToken">Токен отмены запроса</param>
+            <returns>Заметки</returns>
+        </member>
+        <member name="M:Notes.Web.Controllers.NotesController.GetNoteAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+                Запрос на получение заметки по Id
+            </summary>
+            <param name="noteId">Id заметки</param>
+            <param name="cancellationToken">Токен отмены запроса</param>
+            <returns></returns>
+        </member>
+        <member name="M:Notes.Web.Controllers.NotesController.CreateNoteAsync(Notes.Data.Features.Notes.Commands.CreateNote.CreateNoteDto,System.Threading.CancellationToken)">
+            <summary>
+                Запрос на создание заметки
+            </summary>
+            <param name="dto">Данные заметки</param>
+            <param name="cancellationToken">Токен отмены запроса</param>
+            <returns>Id заметки</returns>
+        </member>
+        <member name="M:Notes.Web.Controllers.NotesController.UpdateNoteAsync(System.Int32,Notes.Data.Features.Notes.Commands.UpdateNote.UpdateNoteDto,System.Threading.CancellationToken)">
+            <summary>
+                Запрос на обновление заметки
+            </summary>
+            <param name="noteId">Id заметки</param>
+            <param name="dto">Обновлённые данные</param>
+            <param name="cancellationToken">Токен отмены запроса</param>
+        </member>
+        <member name="M:Notes.Web.Controllers.NotesController.PinNoteAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+                Команда на закрепление заметки
+            </summary>
+            <param name="noteId">Id заметки</param>
+            <param name="cancellationToken">Токен отмены команды</param>
+        </member>
+        <member name="M:Notes.Web.Controllers.NotesController.UnpinNoteAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+                Команда на открепление заметки
+            </summary>
+            <param name="noteId">Id заметки</param>
+            <param name="cancellationToken">Токен отмены команды</param>
+        </member>
+        <member name="M:Notes.Web.Controllers.NotesController.DeleteNoteAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+                Запрос на удаление заметки
+            </summary>
+            <param name="noteId">Id заметки</param>
+            <param name="cancellationToken">Токен отмены запроса</param>
+        </member>
+        <member name="T:Notes.Web.Controllers.UsersController">
+            <summary>
+            Контроллер пользователей
+            </summary>
+        </member>
+        <member name="M:Notes.Web.Controllers.UsersController.GetUserTokenAsync(Notes.Data.Features.Users.Commands.GetUserToken.GetUserTokenDto,System.Threading.CancellationToken)">
+            <summary>
+            Запрос аунтентификации пользователя
+            </summary>
+            <param name="dto">Данные пользователя</param>
+            <param name="cancellationToken">Токен отмены</param>
+            <returns>Jwt токен</returns>
+        </member>
+        <member name="M:Notes.Web.Controllers.UsersController.RegisterUserAsync(Notes.Data.Features.Users.Commands.CreateUser.CreateUserDto,System.Threading.CancellationToken)">
+            <summary>
+            Запрос на создание нового пользователя
+            </summary>
+            <param name="dto">Данные пользователя</param>
+            <param name="cancellationToken">Токен отмены</param>
+            <returns>Jwt токен</returns>
+        </member>
+    </members>
+</doc>

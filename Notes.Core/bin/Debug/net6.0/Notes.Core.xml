@@ -1,0 +1,319 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Notes.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Notes.Core.Entities.Label">
+            <summary>
+                Ярлык
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.Label.Id">
+            <summary>
+                Id ярлыка
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.Label.Title">
+            <summary>
+                Наименование ярлыка
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.Label.UserId">
+            <summary>
+                Id пользователя
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.Label.User">
+            <summary>
+                Пользователь
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.Label.NoteLabels">
+            <summary>
+                Ярлыки заметок
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.Label.Histories">
+            <summary>
+                История изменения ярлыка
+            </summary>
+        </member>
+        <member name="M:Notes.Core.Entities.Label.Access(Notes.Core.Interfaces.IHasHistoryVisitor)">
+            <summary>
+                Метод получения истории ярлыка
+            </summary>
+            <param name="visitor">Посетитель для ведения истории</param>
+            <returns>История ярлыка</returns>
+        </member>
+        <member name="T:Notes.Core.Entities.LabelHistory">
+            <summary>
+                История ярлыка
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.LabelHistory.Id">
+            <summary>
+                Id истории ярлыка
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.LabelHistory.Title">
+            <summary>
+                Наименование ярлыка, занесённое в историю
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.LabelHistory.LabelId">
+            <summary>
+                Id ярлыка
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.LabelHistory.Label">
+            <summary>
+                Ярлык
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.LabelHistory.DateOfModification">
+            <summary>
+                Дата внесения изменения
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.LabelHistory.State">
+            <summary>
+                Состояние заметки
+            </summary>
+        </member>
+        <member name="T:Notes.Core.Entities.Note">
+            <summary>
+                Заметка
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.Note.Id">
+            <summary>
+                Id заметки
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.Note.Header">
+            <summary>
+                Заголовок заметки
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.Note.Body">
+            <summary>
+                Тело заметки
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.Note.IsPinned">
+            <summary>
+                Флаг закреплена/откреплена
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.Note.UserId">
+            <summary>
+                Id пользователя
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.Note.User">
+            <summary>
+                Пользователь
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.Note.NoteLabels">
+            <summary>
+                Ярлыки заметок
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.Note.Histories">
+            <summary>
+                История заметки
+            </summary>
+        </member>
+        <member name="M:Notes.Core.Entities.Note.Access(Notes.Core.Interfaces.IHasHistoryVisitor)">
+            <summary>
+                Метод получения истории заметки
+            </summary>
+            <param name="visitor">Посетитель для ведения истории</param>
+            <returns>История заметки</returns>
+        </member>
+        <member name="T:Notes.Core.Entities.NoteHistory">
+            <summary>
+                История заметки
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.NoteHistory.Id">
+            <summary>
+                Id истории заметки
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.NoteHistory.Header">
+            <summary>
+                Заголовок заметки, занесённый в историю
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.NoteHistory.Body">
+            <summary>
+                Тело заметки, занесённое в историю
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.NoteHistory.NoteId">
+            <summary>
+                Id заметки
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.NoteHistory.Note">
+            <summary>
+                Заметка
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.NoteHistory.DateOfModification">
+            <summary>
+                Дата внесения изменения
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.NoteHistory.State">
+            <summary>
+                Состояние заметки
+            </summary>
+        </member>
+        <member name="T:Notes.Core.Entities.NoteLabel">
+            <summary>
+                Ярлыка заметки
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.NoteLabel.NoteId">
+            <summary>
+                Id заметки
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.NoteLabel.Note">
+            <summary>
+                Заметка
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.NoteLabel.LabelId">
+            <summary>
+                Id ярлыка
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.NoteLabel.Label">
+            <summary>
+                Ярлык
+            </summary>
+        </member>
+        <member name="T:Notes.Core.Entities.User">
+            <summary>
+                Пользователь
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.User.Id">
+            <summary>
+                Id пользователя
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.User.Name">
+            <summary>
+                Имя пользователя
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.User.Surname">
+            <summary>
+                Фамилия пользователя
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.User.Patronymic">
+            <summary>
+                Отчество пользователя
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.User.FullName">
+            <summary>
+                Полное имя пользователя
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.User.FullNameShort">
+            <summary>
+                Сокращённое имя пользователя
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.User.DateOfBirth">
+            <summary>
+                Дата рождения пользователя
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.User.Age">
+            <summary>
+                Возраст пользователя
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.User.Email">
+            <summary>
+                Адрес электронной почты пользователя
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.User.Password">
+            <summary>
+                Пароль пользователя
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.User.Notes">
+            <summary>
+                Заметки пользователя
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.User.Labels">
+            <summary>
+                Ярлыки пользователя
+            </summary>
+        </member>
+        <member name="T:Notes.Core.Interfaces.IHasHistory`1">
+            <summary>
+                Интерфейс наличия истории у сущности
+            </summary>
+            <typeparam name="THistory"></typeparam>
+        </member>
+        <member name="P:Notes.Core.Interfaces.IHasHistory`1.Histories">
+            <summary>
+                История изменения сущности
+            </summary>
+        </member>
+        <member name="M:Notes.Core.Interfaces.IHasHistory`1.Access(Notes.Core.Interfaces.IHasHistoryVisitor)">
+            <summary>
+                Метод создания слепка сущности для ведения истории
+            </summary>
+            <param name="visitor">Посетитель создания истории</param>
+            <returns>Сущность истории</returns>
+        </member>
+        <member name="T:Notes.Core.Interfaces.IHasHistoryVisitor">
+            <summary>
+                Интерфейс посетителя для ведения истории
+            </summary>
+        </member>
+        <member name="M:Notes.Core.Interfaces.IHasHistoryVisitor.Visit(Notes.Core.Entities.Label)">
+            <summary>
+                Метод создания истории для сущности ярлыка
+            </summary>
+            <param name="entity">Ярлык</param>
+            <returns>История ярлыка</returns>
+        </member>
+        <member name="M:Notes.Core.Interfaces.IHasHistoryVisitor.Visit(Notes.Core.Entities.Note)">
+            <summary>
+                Метод создания истории для сущности заметки
+            </summary>
+            <param name="entity">Заметка</param>
+            <returns>История заметки</returns>
+        </member>
+        <member name="T:Notes.Core.Interfaces.IHistory">
+            <summary>
+                Интерфейс истории для сущности
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Interfaces.IHistory.DateOfModification">
+            <summary>
+                Дата внесения изменения
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Interfaces.IHistory.State">
+            <summary>
+                Состояние сущности
+            </summary>
+        </member>
+    </members>
+</doc>

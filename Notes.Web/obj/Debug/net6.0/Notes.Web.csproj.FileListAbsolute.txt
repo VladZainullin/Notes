@@ -84,3 +84,5 @@
 /Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
 /Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.dll
 /Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/Notes.Web.xml
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/bin/Debug/net6.0/Notes.Core.xml

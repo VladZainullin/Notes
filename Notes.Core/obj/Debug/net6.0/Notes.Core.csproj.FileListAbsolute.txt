@@ -10,3 +10,4 @@
 /Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Core/obj/Debug/net6.0/refint/Notes.Core.dll
 /Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Core/obj/Debug/net6.0/Notes.Core.pdb
 /Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Core/obj/Debug/net6.0/ref/Notes.Core.dll
+/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Core/bin/Debug/net6.0/Notes.Core.xml

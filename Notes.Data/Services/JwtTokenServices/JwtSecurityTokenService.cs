@@ -7,15 +7,30 @@ using Notes.Core.Entities;
 
 namespace Notes.Data.Services.JwtTokenServices;
 
+/// <summary>
+/// Сервис создания jwt токенов
+/// </summary>
 public sealed class JwtSecurityTokenService
 {
+    /// <summary>
+    /// конфигурация приложения
+    /// </summary>
     private readonly IConfiguration _configuration;
 
+    /// <summary>
+    /// Конструктор сервиса создания jwt токенов
+    /// </summary>
+    /// <param name="configuration">Конфигурация приложения</param>
     public JwtSecurityTokenService(IConfiguration configuration)
     {
         _configuration = configuration;
     }
 
+    /// <summary>
+    /// Метод создания jwt токена
+    /// </summary>
+    /// <param name="user">Пользователь</param>
+    /// <returns>Токен в виде строки</returns>
     public string Create(User user)
     {
         var claims = CreateClaims(user);
