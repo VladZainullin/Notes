@@ -43,8 +43,16 @@ public sealed class Note :
     /// </summary>
     public ICollection<NoteLabel> NoteLabels { get; set; } = new List<NoteLabel>();
 
+    /// <summary>
+    ///     История заметки
+    /// </summary>
     public IReadOnlyCollection<NoteHistory> Histories { get; } = new List<NoteHistory>();
 
+    /// <summary>
+    ///     Метод получения истории заметки
+    /// </summary>
+    /// <param name="visitor">Посетитель для ведения истории</param>
+    /// <returns>История заметки</returns>
     public NoteHistory Access(IHasHistoryVisitor visitor)
     {
         return visitor.Visit(this);

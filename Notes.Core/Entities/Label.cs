@@ -32,8 +32,16 @@ public sealed class Label : IHasHistory<LabelHistory>
     /// </summary>
     public ICollection<NoteLabel> NoteLabels { get; set; } = new List<NoteLabel>();
 
+    /// <summary>
+    ///     История изменения ярлыка
+    /// </summary>
     public IReadOnlyCollection<LabelHistory> Histories { get; } = new List<LabelHistory>();
 
+    /// <summary>
+    ///     Метод получения истории ярлыка
+    /// </summary>
+    /// <param name="visitor">Посетитель для ведения истории</param>
+    /// <returns>История ярлыка</returns>
     public LabelHistory Access(IHasHistoryVisitor visitor)
     {
         return visitor.Visit(this);
