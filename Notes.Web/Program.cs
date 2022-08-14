@@ -55,13 +55,13 @@ builder.Services.AddHttpContextAccessor();
 
 #region MediatR
 
-builder.Services.AddMediatR(Assembly.Load("Notes.Data"));
+builder.Services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
 
 #endregion
 
 #region AutoMapper
 
-builder.Services.AddAutoMapper(Assembly.Load("Notes.Data"));
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 #endregion
 
@@ -162,6 +162,8 @@ if (app.Environment.IsDevelopment())
     app.UseMiniProfiler();
 
     #endregion
+    
+    app.UseHsts();
 }
 
 app.UseHttpsRedirection();
