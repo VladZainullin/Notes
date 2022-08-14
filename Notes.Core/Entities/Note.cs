@@ -29,6 +29,16 @@ public sealed class Note :
     public bool IsPinned { get; set; }
 
     /// <summary>
+    /// Id пользователя
+    /// </summary>
+    public int UserId { get; set; }
+    
+    /// <summary>
+    /// Пользователь
+    /// </summary>
+    public User? User { get; set; }
+
+    /// <summary>
     ///     Ярлыки заметок
     /// </summary>
     public ICollection<NoteLabel> NoteLabels { get; set; } = new List<NoteLabel>();

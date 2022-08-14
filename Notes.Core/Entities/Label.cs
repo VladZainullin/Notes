@@ -16,6 +16,16 @@ public sealed class Label : IHasHistory<LabelHistory>
     ///     Наименование ярлыка
     /// </summary>
     public string? Title { get; set; }
+    
+    /// <summary>
+    /// Id пользователя
+    /// </summary>
+    public int UserId { get; set; }
+    
+    /// <summary>
+    /// Пользователь
+    /// </summary>
+    public User? User { get; set; }
 
     /// <summary>
     ///     Ярлыки заметок

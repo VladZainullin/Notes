@@ -19,4 +19,8 @@ public sealed class User
     public string? Email { get; set; }
 
     public string? Password { get; set; }
+
+    public ICollection<Note> Notes { get; set; } = new List<Note>();
+
+    public ICollection<Label> Labels { get; set; } = new List<Label>();
 }
