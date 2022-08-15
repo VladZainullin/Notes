@@ -126,6 +126,11 @@
                 История заметки
             </summary>
         </member>
+        <member name="P:Notes.Core.Entities.Note.Reminders">
+            <summary>
+            Напоминания заметки
+            </summary>
+        </member>
         <member name="M:Notes.Core.Entities.Note.Access(Notes.Core.Interfaces.IHasHistoryVisitor)">
             <summary>
                 Метод получения истории заметки
@@ -196,6 +201,31 @@
         <member name="P:Notes.Core.Entities.NoteLabel.Label">
             <summary>
                 Ярлык
+            </summary>
+        </member>
+        <member name="T:Notes.Core.Entities.Reminder">
+            <summary>
+            Напоминание
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.Reminder.Id">
+            <summary>
+            Id напоминания
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.Reminder.DateOfInclusion">
+            <summary>
+            Дата включения
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.Reminder.NoteId">
+            <summary>
+            Id заметки
+            </summary>
+        </member>
+        <member name="P:Notes.Core.Entities.Reminder.Note">
+            <summary>
+            Заметка
             </summary>
         </member>
         <member name="T:Notes.Core.Entities.User">

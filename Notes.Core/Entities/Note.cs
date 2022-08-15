@@ -49,6 +49,11 @@ public sealed class Note :
     public IReadOnlyCollection<NoteHistory> Histories { get; } = new List<NoteHistory>();
 
     /// <summary>
+    /// Напоминания заметки
+    /// </summary>
+    public ICollection<Reminder> Reminders { get; set; } = new List<Reminder>();
+
+    /// <summary>
     ///     Метод получения истории заметки
     /// </summary>
     /// <param name="visitor">Посетитель для ведения истории</param>
