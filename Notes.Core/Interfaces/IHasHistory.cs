@@ -10,6 +10,7 @@ public interface IHasHistory<out THistory>
     /// <summary>
     ///     История изменения сущности
     /// </summary>
+    // ReSharper disable once ReturnTypeCanBeEnumerable.Global
     IReadOnlyCollection<THistory> Histories { get; }
 
     /// <summary>
