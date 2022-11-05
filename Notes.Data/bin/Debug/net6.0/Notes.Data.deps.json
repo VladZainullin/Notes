@@ -18,8 +18,7 @@
           "Notes.Core": "1.0.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "6.0.6",
           "Serilog.AspNetCore": "6.0.1",
-          "System.IdentityModel.Tokens.Jwt": "6.22.0",
-          "Microsoft.AspNetCore.Http.Abstractions": "6.0.0.0"
+          "System.IdentityModel.Tokens.Jwt": "6.22.0"
         },
         "runtime": {
           "Notes.Data.dll": {}
@@ -465,14 +464,6 @@
         "runtime": {
           "Notes.Core.dll": {}
         }
-      },
-      "Microsoft.AspNetCore.Http.Abstractions/6.0.0.0": {
-        "runtime": {
-          "Microsoft.AspNetCore.Http.Abstractions.dll": {
-            "assemblyVersion": "6.0.0.0",
-            "fileVersion": "6.0.722.32205"
-          }
-        }
       }
     }
   },
@@ -848,11 +839,6 @@
     },
     "Notes.Core/1.0.0": {
       "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Microsoft.AspNetCore.Http.Abstractions/6.0.0.0": {
-      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

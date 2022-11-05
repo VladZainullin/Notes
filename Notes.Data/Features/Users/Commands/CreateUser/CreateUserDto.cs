@@ -5,6 +5,6 @@ public sealed record CreateUserDto(
     string Surname,
     string Patronymic,
     DateTime DateOfBirth,
-    string Login,
+    string Email,
     string Password,
     string RepeatPassword);

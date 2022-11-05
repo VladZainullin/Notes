@@ -4,6 +4,17 @@
         <name>Notes.Web</name>
     </assembly>
     <members>
+        <member name="T:Notes.Web.Controllers.Controller">
+            <summary>
+            Базовый контроллер проекта
+            </summary>
+        </member>
+        <member name="P:Notes.Web.Controllers.Controller.Mediator">
+            <summary>
+            Объект вызова обработчиков запроса 
+            </summary>
+            <exception cref="T:System.NullReferenceException">Объект не найден</exception>
+        </member>
         <member name="T:Notes.Web.Controllers.LabelsController">
             <summary>
                 Контроллер ярлыков
