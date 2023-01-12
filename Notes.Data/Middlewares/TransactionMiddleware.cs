@@ -4,26 +4,26 @@ using Notes.Data.Contexts;
 namespace Notes.Data.Middlewares;
 
 /// <summary>
-/// Промежуточное программное обеспечение для создания единой транзакции запроса
+///     Промежуточное программное обеспечение для создания единой транзакции запроса
 /// </summary>
 public sealed class TransactionMiddleware : IMiddleware
 {
     /// <summary>
-    /// Контекст базы данных
+    ///     Контекст базы данных
     /// </summary>
     private readonly AppDbContext _context;
 
     /// <summary>
-    /// Конструктор промежуточного программного обеспечения для создания единой транзакции запроса
+    ///     Конструктор промежуточного программного обеспечения для создания единой транзакции запроса
     /// </summary>
     /// <param name="context"></param>
     public TransactionMiddleware(AppDbContext context)
     {
         _context = context;
     }
-    
+
     /// <summary>
-    /// Мотод обработки запроса
+    ///     Мотод обработки запроса
     /// </summary>
     /// <param name="context">Контекст базы данных</param>
     /// <param name="next">Делегат перемещения в следующее промежуточное програмное обеспечение</param>

@@ -1,26 +1,27 @@
 namespace Notes.Core.Entities;
 
 /// <summary>
-/// Напоминание
+///     Напоминание
 /// </summary>
 public sealed class Reminder
 {
     /// <summary>
-    /// Id напоминания
+    ///     Id напоминания
     /// </summary>
     public int Id { get; set; }
 
     /// <summary>
-    /// Дата включения
+    ///     Дата включения
     /// </summary>
     public DateTime DateOfInclusion { get; set; }
 
     /// <summary>
-    /// Id заметки
+    ///     Id заметки
     /// </summary>
     public int NoteId { get; set; }
+
     /// <summary>
-    /// Заметка
+    ///     Заметка
     /// </summary>
     public Note? Note { get; set; }
 }

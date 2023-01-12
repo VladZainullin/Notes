@@ -3,7 +3,6 @@ using System.Text;
 using Hangfire;
 using Hangfire.MemoryStorage;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Notes.Data.Contexts;
 using Notes.Data.Middlewares;
@@ -162,7 +161,7 @@ if (app.Environment.IsDevelopment())
     app.UseMiniProfiler();
 
     #endregion
-    
+
     app.UseHsts();
 }
 

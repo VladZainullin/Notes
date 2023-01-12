@@ -40,7 +40,7 @@ internal sealed class CreateNoteLabelHandler :
             throw new BadRequestException("Заметка не найдена!");
 
         var noteAccess = await GetNoteAccessAsync(
-            request.NoteId, 
+            request.NoteId,
             cancellationToken);
         if (!noteAccess)
             throw new ForbiddenException("Заметка принадлежит другому пользователю");
@@ -50,9 +50,9 @@ internal sealed class CreateNoteLabelHandler :
             cancellationToken);
         if (!labelExists)
             throw new BadRequestException("Ярлык не найден!");
-        
+
         var labelAccess = await GetNoteAccessAsync(
-            request.LabelId, 
+            request.LabelId,
             cancellationToken);
         if (!labelAccess)
             throw new ForbiddenException("Ярлык принадлежит другому пользователю");

@@ -1,6 +1,5 @@
 using AutoMapper;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Notes.Core.Entities;
 using Notes.Data.Contexts;
 using Notes.Data.Services.Users;

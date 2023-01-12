@@ -44,14 +44,14 @@ public sealed class Note :
     public ICollection<NoteLabel> NoteLabels { get; set; } = new List<NoteLabel>();
 
     /// <summary>
+    ///     Напоминания заметки
+    /// </summary>
+    public ICollection<Reminder> Reminders { get; set; } = new List<Reminder>();
+
+    /// <summary>
     ///     История заметки
     /// </summary>
     public IReadOnlyCollection<NoteHistory> Histories { get; } = new List<NoteHistory>();
-
-    /// <summary>
-    /// Напоминания заметки
-    /// </summary>
-    public ICollection<Reminder> Reminders { get; set; } = new List<Reminder>();
 
     /// <summary>
     ///     Метод получения истории заметки

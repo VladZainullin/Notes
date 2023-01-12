@@ -5,13 +5,13 @@ using Notes.Data.Features.Users.Commands.GetUserToken;
 namespace Notes.Web.Controllers;
 
 /// <summary>
-/// Контроллер пользователей
+///     Контроллер пользователей
 /// </summary>
 [Route("api/users")]
 public sealed class UsersController : Controller
 {
     /// <summary>
-    /// Запрос аунтентификации пользователя
+    ///     Запрос аунтентификации пользователя
     /// </summary>
     /// <param name="dto">Данные пользователя</param>
     /// <param name="cancellationToken">Токен отмены</param>
@@ -25,7 +25,7 @@ public sealed class UsersController : Controller
     }
 
     /// <summary>
-    /// Запрос на создание нового пользователя
+    ///     Запрос на создание нового пользователя
     /// </summary>
     /// <param name="dto">Данные пользователя</param>
     /// <param name="cancellationToken">Токен отмены</param>

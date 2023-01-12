@@ -1,11 +1,9 @@
-using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Notes.Core.Entities;
 using Notes.Data.Contexts;
 using Notes.Data.Exceptions;
 using Notes.Data.Services.JwtTokenServices;
-using Notes.Data.Services.Users;
 
 namespace Notes.Data.Features.Users.Commands.GetUserToken;
 

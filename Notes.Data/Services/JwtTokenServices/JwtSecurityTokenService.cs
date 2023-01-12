@@ -8,17 +8,17 @@ using Notes.Core.Entities;
 namespace Notes.Data.Services.JwtTokenServices;
 
 /// <summary>
-/// Сервис создания jwt токенов
+///     Сервис создания jwt токенов
 /// </summary>
 public sealed class JwtSecurityTokenService
 {
     /// <summary>
-    /// конфигурация приложения
+    ///     конфигурация приложения
     /// </summary>
     private readonly IConfiguration _configuration;
 
     /// <summary>
-    /// Конструктор сервиса создания jwt токенов
+    ///     Конструктор сервиса создания jwt токенов
     /// </summary>
     /// <param name="configuration">Конфигурация приложения</param>
     public JwtSecurityTokenService(IConfiguration configuration)
@@ -27,7 +27,7 @@ public sealed class JwtSecurityTokenService
     }
 
     /// <summary>
-    /// Метод создания jwt токена
+    ///     Метод создания jwt токена
     /// </summary>
     /// <param name="user">Пользователь</param>
     /// <returns>Токен в виде строки</returns>
