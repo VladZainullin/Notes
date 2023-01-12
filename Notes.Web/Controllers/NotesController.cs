@@ -15,7 +15,7 @@ namespace Notes.Web.Controllers;
 /// </summary>
 [Route("api/notes")]
 [Authorize]
-public sealed class NotesController : Controller
+public sealed class NotesController : ApiControllerBase
 {
     /// <summary>
     ///     Запрос на получение всех заметок

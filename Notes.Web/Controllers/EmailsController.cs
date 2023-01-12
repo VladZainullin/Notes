@@ -4,7 +4,7 @@ using Notes.Data.Services.Emails;
 namespace Notes.Web.Controllers;
 
 [Route("api/emails")]
-public class EmailsController : Controller
+public class EmailsController : ApiControllerBase
 {
     private readonly EmailService _emailService;
 

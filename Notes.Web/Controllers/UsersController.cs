@@ -8,7 +8,7 @@ namespace Notes.Web.Controllers;
 ///     Контроллер пользователей
 /// </summary>
 [Route("api/users")]
-public sealed class UsersController : Controller
+public sealed class UsersController : ApiControllerBase
 {
     /// <summary>
     ///     Запрос аунтентификации пользователя

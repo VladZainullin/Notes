@@ -13,7 +13,7 @@ namespace Notes.Web.Controllers;
 /// </summary>
 [Route("api/labels")]
 [Authorize(Policy = "register")]
-public sealed class LabelsController : Controller
+public sealed class LabelsController : ApiControllerBase
 {
     /// <summary>
     ///     Запрос на получение всех ярлыков

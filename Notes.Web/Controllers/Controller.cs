@@ -7,7 +7,7 @@ namespace Notes.Web.Controllers;
 ///     Базовый контроллер проекта
 /// </summary>
 [ApiController]
-public class Controller : ControllerBase
+public abstract class ApiControllerBase : ControllerBase
 {
     /// <summary>
     ///     Объект вызова обработчиков запроса

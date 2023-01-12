@@ -11,7 +11,7 @@ namespace Notes.Web.Controllers;
 /// </summary>
 [Route("api/notes/{noteId:int}/labels")]
 [Authorize]
-public sealed class NoteLabelController : Controller
+public sealed class NoteLabelController : ApiControllerBase
 {
     /// <summary>
     ///     Запрос на получение ярлыков заметки
