@@ -6,12 +6,12 @@
     <members>
         <member name="T:Notes.Web.Controllers.Controller">
             <summary>
-            Базовый контроллер проекта
+                Базовый контроллер проекта
             </summary>
         </member>
         <member name="P:Notes.Web.Controllers.Controller.Mediator">
             <summary>
-            Объект вызова обработчиков запроса 
+                Объект вызова обработчиков запроса
             </summary>
             <exception cref="T:System.NullReferenceException">Объект не найден</exception>
         </member>
@@ -146,12 +146,12 @@
         </member>
         <member name="T:Notes.Web.Controllers.UsersController">
             <summary>
-            Контроллер пользователей
+                Контроллер пользователей
             </summary>
         </member>
         <member name="M:Notes.Web.Controllers.UsersController.GetUserTokenAsync(Notes.Data.Features.Users.Commands.GetUserToken.GetUserTokenDto,System.Threading.CancellationToken)">
             <summary>
-            Запрос аунтентификации пользователя
+                Запрос аунтентификации пользователя
             </summary>
             <param name="dto">Данные пользователя</param>
             <param name="cancellationToken">Токен отмены</param>
@@ -159,7 +159,7 @@
         </member>
         <member name="M:Notes.Web.Controllers.UsersController.RegisterUserAsync(Notes.Data.Features.Users.Commands.CreateUser.CreateUserDto,System.Threading.CancellationToken)">
             <summary>
-            Запрос на создание нового пользователя
+                Запрос на создание нового пользователя
             </summary>
             <param name="dto">Данные пользователя</param>
             <param name="cancellationToken">Токен отмены</param>

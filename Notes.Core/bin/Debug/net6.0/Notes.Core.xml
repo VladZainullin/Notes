@@ -121,14 +121,14 @@
                 Ярлыки заметок
             </summary>
         </member>
+        <member name="P:Notes.Core.Entities.Note.Reminders">
+            <summary>
+                Напоминания заметки
+            </summary>
+        </member>
         <member name="P:Notes.Core.Entities.Note.Histories">
             <summary>
                 История заметки
-            </summary>
-        </member>
-        <member name="P:Notes.Core.Entities.Note.Reminders">
-            <summary>
-            Напоминания заметки
             </summary>
         </member>
         <member name="M:Notes.Core.Entities.Note.Access(Notes.Core.Interfaces.IHasHistoryVisitor)">
@@ -205,27 +205,27 @@
         </member>
         <member name="T:Notes.Core.Entities.Reminder">
             <summary>
-            Напоминание
+                Напоминание
             </summary>
         </member>
         <member name="P:Notes.Core.Entities.Reminder.Id">
             <summary>
-            Id напоминания
+                Id напоминания
             </summary>
         </member>
         <member name="P:Notes.Core.Entities.Reminder.DateOfInclusion">
             <summary>
-            Дата включения
+                Дата включения
             </summary>
         </member>
         <member name="P:Notes.Core.Entities.Reminder.NoteId">
             <summary>
-            Id заметки
+                Id заметки
             </summary>
         </member>
         <member name="P:Notes.Core.Entities.Reminder.Note">
             <summary>
-            Заметка
+                Заметка
             </summary>
         </member>
         <member name="T:Notes.Core.Entities.User">

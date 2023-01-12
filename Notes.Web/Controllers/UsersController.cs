@@ -18,7 +18,7 @@ public sealed class UsersController : Controller
     /// <returns>Jwt токен</returns>
     [HttpGet]
     public async Task<IActionResult> GetUserTokenAsync(
-        [FromBody] GetUserTokenDto dto,
+        [FromQuery] GetUserTokenDto dto,
         [FromQuery] CancellationToken cancellationToken)
     {
         return Ok(await Mediator.Send(new GetUserTokenCommand(dto), cancellationToken));
