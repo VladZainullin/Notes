@@ -3,6 +3,7 @@ using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Notes.Core.Entities;
+using Notes.Data.Contexts;
 using Notes.Data.Exceptions;
 using Notes.Data.Services.Users;
 
@@ -22,12 +23,12 @@ public sealed record GetLabelQuery :
 internal sealed class GetLabelHandler :
     IRequestHandler<GetLabelQuery, GetLabelDto>
 {
-    private readonly DbContext _context;
+    private readonly AppDbContext _context;
     private readonly CurrentUserService _currentUserService;
     private readonly IConfigurationProvider _provider;
 
     public GetLabelHandler(
-        DbContext context,
+        AppDbContext context,
         CurrentUserService currentUserService,
         IConfigurationProvider provider)
     {
@@ -47,7 +48,7 @@ internal sealed class GetLabelHandler :
             throw new NotFoundException("Ярлык не найден");
 
         var access = await _context
-            .Set<Label>()
+            .Labels
             .AnyAsync(label => label.Id == request.LabelId
                                &&
                                label.UserId == _currentUserService.Id, cancellationToken);
@@ -65,8 +66,7 @@ internal sealed class GetLabelHandler :
         int labelId,
         CancellationToken cancellationToken)
     {
-        var exists = await _context
-            .Set<Label>()
+        var exists = await _context.Labels
             .AnyAsync(label => label.Id == labelId, cancellationToken);
 
         return exists;
@@ -76,8 +76,7 @@ internal sealed class GetLabelHandler :
         int labelId,
         CancellationToken cancellationToken)
     {
-        return await _context
-            .Set<Label>()
+        return await _context.Labels
             .Where(label => label.Id == labelId)
             .ProjectTo<GetLabelDto>(_provider)
             .SingleAsync(cancellationToken);

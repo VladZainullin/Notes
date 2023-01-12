@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Notes.Core.Entities;
+using Notes.Data.Contexts;
 using Notes.Data.Exceptions;
 using Notes.Data.Services.Users;
 
@@ -11,11 +12,11 @@ public sealed record DeleteNoteCommand(int NoteId) : IRequest;
 internal sealed class DeleteNoteHandler :
     AsyncRequestHandler<DeleteNoteCommand>
 {
-    private readonly DbContext _context;
+    private readonly AppDbContext _context;
     private readonly CurrentUserService _currentUserService;
 
     public DeleteNoteHandler(
-        DbContext context,
+        AppDbContext context,
         CurrentUserService currentUserService)
     {
         _context = context;
@@ -35,7 +36,7 @@ internal sealed class DeleteNoteHandler :
         if (!access)
             throw new ForbiddenException("Заметка принадлежит другому пользователю!");
 
-        _context.Remove(note);
+        _context.Notes.Remove(note);
         await _context.SaveChangesAsync(cancellationToken);
     }
 
@@ -43,8 +44,7 @@ internal sealed class DeleteNoteHandler :
         int noteId,
         CancellationToken cancellationToken)
     {
-        var exists = await _context
-            .Set<Note>()
+        var exists = await _context.Notes
             .AnyAsync(n => n.Id == noteId, cancellationToken);
 
         return exists;
@@ -54,8 +54,7 @@ internal sealed class DeleteNoteHandler :
         int noteId,
         CancellationToken cancellationToken)
     {
-        var note = await _context
-            .Set<Note>()
+        var note = await _context.Notes
             .SingleAsync(n => n.Id == noteId, cancellationToken);
 
         return note;

@@ -2,6 +2,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Notes.Core.Entities;
+using Notes.Data.Contexts;
 using Notes.Data.Exceptions;
 using Notes.Data.Services.JwtTokenServices;
 
@@ -11,12 +12,12 @@ public sealed record CreateUserCommand(CreateUserDto Dto) : IRequest<string>;
 
 internal sealed class CreateUserHandler : IRequestHandler<CreateUserCommand, string>
 {
-    private readonly DbContext _context;
+    private readonly AppDbContext _context;
     private readonly JwtSecurityTokenService _jwtSecurityTokenService;
     private readonly IMapper _mapper;
 
     public CreateUserHandler(
-        DbContext context,
+        AppDbContext context,
         JwtSecurityTokenService jwtSecurityTokenService,
         IMapper mapper)
     {
@@ -37,7 +38,7 @@ internal sealed class CreateUserHandler : IRequestHandler<CreateUserCommand, str
         if (exists)
             throw new BadRequestException("По данному почтовому ящику уже зарегистрирован аккаунт");
 
-        await _context.AddAsync(user, cancellationToken);
+        await _context.Users.AddAsync(user, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
 
         var token = _jwtSecurityTokenService.Create(user);
@@ -49,8 +50,7 @@ internal sealed class CreateUserHandler : IRequestHandler<CreateUserCommand, str
         string email,
         CancellationToken cancellationToken)
     {
-        var exists = await _context
-            .Set<User>()
+        var exists = await _context.Users
             .AsNoTracking()
             .AnyAsync(u => u.Email == email, cancellationToken);
 

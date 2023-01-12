@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "frvPb/YKmrUsRwhCdpfAMOmpt3oIFTotz85r4wpRHZkBtPYWUOuKDDJ6pdJIX6gTHHRPTzj5MuioZT9F1QvgCQ==",
+  "dgSpecHash": "E/V+OCIiaZHC3qiqJjbAtmdPPcb4wXtaUBw4/pBytF3RfVRuU8cvX+g9Ve9+RnjtMMJ75BjNhEgiaGpWlTX8mg==",
   "success": true,
   "projectFilePath": "/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Web/Notes.Web.csproj",
   "expectedPackageFiles": [
@@ -115,10 +115,7 @@
     "/Users/vadislavzainullin/.nuget/packages/system.text.regularexpressions/4.3.0/system.text.regularexpressions.4.3.0.nupkg.sha512",
     "/Users/vadislavzainullin/.nuget/packages/system.threading/4.3.0/system.threading.4.3.0.nupkg.sha512",
     "/Users/vadislavzainullin/.nuget/packages/system.threading.tasks/4.3.0/system.threading.tasks.4.3.0.nupkg.sha512",
-    "/Users/vadislavzainullin/.nuget/packages/system.threading.tasks.parallel/4.3.0/system.threading.tasks.parallel.4.3.0.nupkg.sha512",
-    "/Users/vadislavzainullin/.nuget/packages/microsoft.netcore.app.ref/6.0.10/microsoft.netcore.app.ref.6.0.10.nupkg.sha512",
-    "/Users/vadislavzainullin/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.10/microsoft.aspnetcore.app.ref.6.0.10.nupkg.sha512",
-    "/Users/vadislavzainullin/.nuget/packages/microsoft.netcore.app.host.osx-arm64/6.0.10/microsoft.netcore.app.host.osx-arm64.6.0.10.nupkg.sha512"
+    "/Users/vadislavzainullin/.nuget/packages/system.threading.tasks.parallel/4.3.0/system.threading.tasks.parallel.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

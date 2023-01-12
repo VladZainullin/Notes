@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8EQy2LuCZmjLtR/eu0lmFqsfX1YhzW3aRvAmiLX1HW/TFnV0gWu1fQO4/GyfUrW0jbz9jFGcDDMzkCWQuxTUaA==",
+  "dgSpecHash": "DuMDJx3hSsr2Dgq8bA6MzOolLwv5/Ha3zB7g2UA3Q+/caDx+6qV0T/ZmQlsD0zJXvwY+qijuD81CqUT5bG/XMA==",
   "success": true,
   "projectFilePath": "/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Data/Notes.Data.csproj",
   "expectedPackageFiles": [
@@ -55,9 +55,7 @@
     "/Users/vadislavzainullin/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "/Users/vadislavzainullin/.nuget/packages/system.security.cryptography.cng/4.5.0/system.security.cryptography.cng.4.5.0.nupkg.sha512",
     "/Users/vadislavzainullin/.nuget/packages/system.security.cryptography.pkcs/6.0.0/system.security.cryptography.pkcs.6.0.0.nupkg.sha512",
-    "/Users/vadislavzainullin/.nuget/packages/system.text.json/4.6.0/system.text.json.4.6.0.nupkg.sha512",
-    "/Users/vadislavzainullin/.nuget/packages/microsoft.netcore.app.ref/6.0.10/microsoft.netcore.app.ref.6.0.10.nupkg.sha512",
-    "/Users/vadislavzainullin/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.10/microsoft.aspnetcore.app.ref.6.0.10.nupkg.sha512"
+    "/Users/vadislavzainullin/.nuget/packages/system.text.json/4.6.0/system.text.json.4.6.0.nupkg.sha512"
   ],
   "logs": []
 }

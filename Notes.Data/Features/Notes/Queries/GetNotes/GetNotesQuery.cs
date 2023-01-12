@@ -3,6 +3,7 @@ using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Notes.Core.Entities;
+using Notes.Data.Contexts;
 using Notes.Data.Services.Users;
 
 namespace Notes.Data.Features.Notes.Queries.GetNotes;
@@ -12,12 +13,12 @@ public sealed record GetNotesQuery : IRequest<IEnumerable<GetNotesDto>>;
 internal sealed class GetNotesHandler :
     IRequestHandler<GetNotesQuery, IEnumerable<GetNotesDto>>
 {
-    private readonly DbContext _context;
+    private readonly AppDbContext _context;
     private readonly CurrentUserService _currentUserService;
     private readonly IConfigurationProvider _provider;
 
     public GetNotesHandler(
-        DbContext context,
+        AppDbContext context,
         CurrentUserService currentUserService,
         IConfigurationProvider provider)
     {
@@ -30,8 +31,7 @@ internal sealed class GetNotesHandler :
         GetNotesQuery request,
         CancellationToken cancellationToken)
     {
-        var notes = await _context
-            .Set<Note>()
+        var notes = await _context.Notes
             .AsNoTracking()
             .Where(n => n.UserId == _currentUserService.Id)
             .ProjectTo<GetNotesDto>(_provider)

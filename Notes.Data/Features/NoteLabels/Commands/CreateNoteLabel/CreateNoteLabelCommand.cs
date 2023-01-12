@@ -2,6 +2,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Notes.Core.Entities;
+using Notes.Data.Contexts;
 using Notes.Data.Exceptions;
 using Notes.Data.Services.Users;
 
@@ -14,12 +15,12 @@ public sealed record CreateNoteLabelCommand(
 internal sealed class CreateNoteLabelHandler :
     AsyncRequestHandler<CreateNoteLabelCommand>
 {
-    private readonly DbContext _context;
+    private readonly AppDbContext _context;
     private readonly CurrentUserService _currentUserService;
     private readonly IMapper _mapper;
 
     public CreateNoteLabelHandler(
-        DbContext context,
+        AppDbContext context,
         CurrentUserService currentUserService,
         IMapper mapper)
     {
@@ -64,7 +65,7 @@ internal sealed class CreateNoteLabelHandler :
 
         var noteLabel = _mapper.Map<NoteLabel>(request);
 
-        await _context.AddAsync(noteLabel, cancellationToken);
+        await _context.NoteLabels.AddAsync(noteLabel, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
     }
 
@@ -72,8 +73,7 @@ internal sealed class CreateNoteLabelHandler :
         int noteId,
         CancellationToken cancellationToken)
     {
-        return await _context
-            .Set<Note>()
+        return await _context.Notes
             .AnyAsync(n =>
                 n.Id == noteId
                 &&
@@ -84,8 +84,7 @@ internal sealed class CreateNoteLabelHandler :
         int noteId,
         CancellationToken cancellationToken)
     {
-        var exists = await _context
-            .Set<Note>()
+        var exists = await _context.Notes
             .AsNoTracking()
             .AnyAsync(n => n.Id == noteId, cancellationToken);
 
@@ -96,9 +95,7 @@ internal sealed class CreateNoteLabelHandler :
         int labelId,
         CancellationToken cancellationToken)
     {
-        var exists = await _context
-            .Set<Label>()
-            .AsNoTracking()
+        var exists = await _context.Labels
             .AnyAsync(label => label.Id == labelId, cancellationToken);
 
         return exists;
@@ -108,9 +105,7 @@ internal sealed class CreateNoteLabelHandler :
         CreateNoteLabelCommand request,
         CancellationToken cancellationToken)
     {
-        var exists = await _context
-            .Set<NoteLabel>()
-            .AsNoTracking()
+        var exists = await _context.NoteLabels
             .AnyAsync(nl =>
                     nl.LabelId == request.LabelId
                     &&

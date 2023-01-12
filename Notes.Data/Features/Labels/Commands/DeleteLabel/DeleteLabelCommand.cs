@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Notes.Core.Entities;
+using Notes.Data.Contexts;
 using Notes.Data.Exceptions;
 using Notes.Data.Services.Users;
 
@@ -10,11 +11,11 @@ public sealed record DeleteLabelCommand(int LabelId) : IRequest;
 
 internal sealed class DeleteLabelHandler : AsyncRequestHandler<DeleteLabelCommand>
 {
-    private readonly DbContext _context;
+    private readonly AppDbContext _context;
     private readonly CurrentUserService _currentUserService;
 
     public DeleteLabelHandler(
-        DbContext context,
+        AppDbContext context,
         CurrentUserService currentUserService)
     {
         _context = context;
@@ -39,7 +40,7 @@ internal sealed class DeleteLabelHandler : AsyncRequestHandler<DeleteLabelComman
         if (!access)
             throw new ForbiddenException("Ярлык принадлежит другому пользователю");
 
-        _context.Remove(label);
+        _context.Labels.Remove(label);
 
         await _context.SaveChangesAsync(cancellationToken);
     }
@@ -48,8 +49,7 @@ internal sealed class DeleteLabelHandler : AsyncRequestHandler<DeleteLabelComman
         int labelId,
         CancellationToken cancellationToken)
     {
-        return await _context
-            .Set<Label>()
+        return await _context.Labels
             .AsNoTracking()
             .AnyAsync(label => label.Id == labelId, cancellationToken);
     }
@@ -58,8 +58,7 @@ internal sealed class DeleteLabelHandler : AsyncRequestHandler<DeleteLabelComman
         int labelId,
         CancellationToken cancellationToken)
     {
-        return await _context
-            .Set<Label>()
+        return await _context.Labels
             .AsTracking()
             .SingleAsync(label => label.Id == labelId, cancellationToken);
     }

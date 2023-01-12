@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "VfJPWv2/fasshG+dS0+s6jqqI3QtQN8qTVasXhvqE+hph+LPRrSIDl91s+02CsOMasZRpEagCUb+Zh8He9yxrA==",
+  "dgSpecHash": "k6WzBhOJmmJb4GO4Y8uSUMyl8UR5WtYTSjCewwxJ8Cj92fpUG7Om3jo8tCImpykpp6Dr6UNpU6m5AC78rYYK6A==",
   "success": true,
   "projectFilePath": "/Users/vadislavzainullin/MEGAsync/RiderProjects/Notes/Notes.Core/Notes.Core.csproj",
   "expectedPackageFiles": [
@@ -17,9 +17,7 @@
     "/Users/vadislavzainullin/.nuget/packages/microsoft.extensions.primitives/6.0.0/microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "/Users/vadislavzainullin/.nuget/packages/system.collections.immutable/6.0.0/system.collections.immutable.6.0.0.nupkg.sha512",
     "/Users/vadislavzainullin/.nuget/packages/system.diagnostics.diagnosticsource/6.0.0/system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
-    "/Users/vadislavzainullin/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
-    "/Users/vadislavzainullin/.nuget/packages/microsoft.netcore.app.ref/6.0.10/microsoft.netcore.app.ref.6.0.10.nupkg.sha512",
-    "/Users/vadislavzainullin/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.10/microsoft.aspnetcore.app.ref.6.0.10.nupkg.sha512"
+    "/Users/vadislavzainullin/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }

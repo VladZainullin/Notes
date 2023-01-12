@@ -2,6 +2,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Notes.Core.Entities;
+using Notes.Data.Contexts;
 using Notes.Data.Exceptions;
 using Notes.Data.Services.Users;
 
@@ -12,12 +13,12 @@ public sealed record GetNoteQuery(int NoteId) : IRequest<GetNoteDto>;
 internal sealed class GetNoteHandler :
     IRequestHandler<GetNoteQuery, GetNoteDto>
 {
-    private readonly DbContext _context;
+    private readonly AppDbContext _context;
     private readonly CurrentUserService _currentUserService;
     private readonly IMapper _mapper;
 
     public GetNoteHandler(
-        DbContext context,
+        AppDbContext context,
         CurrentUserService currentUserService,
         IMapper mapper)
     {
@@ -48,8 +49,7 @@ internal sealed class GetNoteHandler :
         int noteId,
         CancellationToken cancellationToken)
     {
-        var exists = await _context
-            .Set<Note>()
+        var exists = await _context.Notes
             .AnyAsync(n => n.Id == noteId, cancellationToken);
 
         return exists;
@@ -59,8 +59,8 @@ internal sealed class GetNoteHandler :
         int noteId,
         CancellationToken cancellationToken)
     {
-        var note = await _context
-            .Set<Note>()
+        var note = await _context.Notes
+            .AsNoTracking()
             .SingleAsync(n => n.Id == noteId, cancellationToken);
 
         return note;

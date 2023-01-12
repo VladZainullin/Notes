@@ -2,6 +2,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Notes.Core.Entities;
+using Notes.Data.Contexts;
 using Notes.Data.Exceptions;
 using Notes.Data.Services.JwtTokenServices;
 using Notes.Data.Services.Users;
@@ -12,14 +13,12 @@ public sealed record GetUserTokenCommand(GetUserTokenDto Dto) : IRequest<string>
 
 internal sealed class GetUserTokenHandler : IRequestHandler<GetUserTokenCommand, string>
 {
-    private readonly DbContext _context;
+    private readonly AppDbContext _context;
     private readonly JwtSecurityTokenService _jwtSecurityTokenService;
 
     public GetUserTokenHandler(
-        DbContext context,
-        CurrentUserService currentUserService,
-        JwtSecurityTokenService jwtSecurityTokenService,
-        IMapper mapper)
+        AppDbContext context,
+        JwtSecurityTokenService jwtSecurityTokenService)
     {
         _context = context;
         _jwtSecurityTokenService = jwtSecurityTokenService;
@@ -49,8 +48,7 @@ internal sealed class GetUserTokenHandler : IRequestHandler<GetUserTokenCommand,
         string email,
         CancellationToken cancellationToken)
     {
-        return await _context
-            .Set<User>()
+        return await _context.Users
             .AsNoTracking()
             .AnyAsync(u => u.Email == email, cancellationToken);
     }
@@ -59,8 +57,7 @@ internal sealed class GetUserTokenHandler : IRequestHandler<GetUserTokenCommand,
         string email,
         CancellationToken cancellationToken)
     {
-        return await _context
-            .Set<User>()
+        return await _context.Users
             .AsNoTracking()
             .SingleAsync(u => u.Email == email, cancellationToken);
     }

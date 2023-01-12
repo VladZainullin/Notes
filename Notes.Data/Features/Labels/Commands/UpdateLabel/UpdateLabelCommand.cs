@@ -2,6 +2,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Notes.Core.Entities;
+using Notes.Data.Contexts;
 using Notes.Data.Exceptions;
 using Notes.Data.Services.Users;
 
@@ -14,12 +15,12 @@ public sealed record UpdateLabelCommand(
 internal sealed class UpdateLabelHandler :
     AsyncRequestHandler<UpdateLabelCommand>
 {
-    private readonly DbContext _context;
+    private readonly AppDbContext _context;
     private readonly CurrentUserService _currentUserService;
     private readonly IMapper _mapper;
 
     public UpdateLabelHandler(
-        DbContext context,
+        AppDbContext context,
         CurrentUserService currentUserService,
         IMapper mapper)
     {
@@ -54,8 +55,7 @@ internal sealed class UpdateLabelHandler :
         int labelId,
         CancellationToken cancellationToken)
     {
-        return await _context
-            .Set<Label>()
+        return await _context.Labels
             .AsNoTracking()
             .AnyAsync(label => label.Id == labelId, cancellationToken);
     }
@@ -64,8 +64,7 @@ internal sealed class UpdateLabelHandler :
         int labelId,
         CancellationToken cancellationToken)
     {
-        return await _context
-            .Set<Label>()
+        return await _context.Labels
             .SingleAsync(label => label.Id == labelId, cancellationToken);
     }
 }

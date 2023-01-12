@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Notes.Core.Entities;
+using Notes.Data.Contexts;
 using Notes.Data.Exceptions;
 using Notes.Data.Services.Users;
 
@@ -10,11 +11,11 @@ public sealed record PinNoteCommand(int NoteId) : IRequest;
 
 internal sealed class PinNoteHandler : AsyncRequestHandler<PinNoteCommand>
 {
-    private readonly DbContext _context;
+    private readonly AppDbContext _context;
     private readonly CurrentUserService _currentUserService;
 
     public PinNoteHandler(
-        DbContext context,
+        AppDbContext context,
         CurrentUserService currentUserService)
     {
         _context = context;
@@ -44,8 +45,7 @@ internal sealed class PinNoteHandler : AsyncRequestHandler<PinNoteCommand>
         int noteId,
         CancellationToken cancellationToken)
     {
-        var exists = await _context
-            .Set<Note>()
+        var exists = await _context.Notes
             .AsNoTracking()
             .AnyAsync(n => n.Id == noteId, cancellationToken);
 
@@ -56,8 +56,7 @@ internal sealed class PinNoteHandler : AsyncRequestHandler<PinNoteCommand>
         int noteId,
         CancellationToken cancellationToken)
     {
-        var note = await _context
-            .Set<Note>()
+        var note = await _context.Notes
             .AsTracking()
             .SingleAsync(n => n.Id == noteId, cancellationToken);
 

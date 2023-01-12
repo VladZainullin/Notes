@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
+using Notes.Data.Contexts;
 
 namespace Notes.Data.Middlewares;
 
@@ -11,13 +11,13 @@ public sealed class TransactionMiddleware : IMiddleware
     /// <summary>
     /// Контекст базы данных
     /// </summary>
-    private readonly DbContext _context;
+    private readonly AppDbContext _context;
 
     /// <summary>
     /// Конструктор промежуточного программного обеспечения для создания единой транзакции запроса
     /// </summary>
     /// <param name="context"></param>
-    public TransactionMiddleware(DbContext context)
+    public TransactionMiddleware(AppDbContext context)
     {
         _context = context;
     }
@@ -31,15 +31,15 @@ public sealed class TransactionMiddleware : IMiddleware
         HttpContext context,
         RequestDelegate next)
     {
-        await using var transaction = await _context.Database.BeginTransactionAsync();
+        await using var transaction = await _context.Database.BeginTransactionAsync(context.RequestAborted);
         try
         {
             await next(context);
-            await transaction.CommitAsync();
+            await transaction.CommitAsync(context.RequestAborted);
         }
         catch
         {
-            await transaction.RollbackAsync();
+            await transaction.RollbackAsync(context.RequestAborted);
             throw;
         }
     }

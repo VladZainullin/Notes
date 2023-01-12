@@ -2,6 +2,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Notes.Core.Entities;
+using Notes.Data.Contexts;
 using Notes.Data.Exceptions;
 
 namespace Notes.Data.Features.NoteLabels.Commands.DeleteNoteLabel;
@@ -13,11 +14,11 @@ public sealed record DeleteNoteLabelCommand(
 internal sealed class DeleteNoteLabelHandler :
     AsyncRequestHandler<DeleteNoteLabelCommand>
 {
-    private readonly DbContext _context;
+    private readonly AppDbContext _context;
     private readonly IMapper _mapper;
 
     public DeleteNoteLabelHandler(
-        DbContext context,
+        AppDbContext context,
         IMapper mapper)
     {
         _context = context;
@@ -36,7 +37,7 @@ internal sealed class DeleteNoteLabelHandler :
 
         var noteLabel = _mapper.Map<NoteLabel>(request);
 
-        _context.Remove(noteLabel);
+        _context.NoteLabels.Remove(noteLabel);
         await _context.SaveChangesAsync(cancellationToken);
     }
 
@@ -44,8 +45,7 @@ internal sealed class DeleteNoteLabelHandler :
         DeleteNoteLabelCommand request,
         CancellationToken cancellationToken)
     {
-        var exists = await _context
-            .Set<NoteLabel>()
+        var exists = await _context.NoteLabels
             .AnyAsync(nl =>
                     nl.LabelId == request.LabelId
                     &&
