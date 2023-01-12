@@ -213,7 +213,7 @@
                 Id напоминания
             </summary>
         </member>
-        <member name="P:Notes.Core.Entities.Reminder.DateOfInclusion">
+        <member name="P:Notes.Core.Entities.Reminder.TimeOfInclusion">
             <summary>
                 Дата включения
             </summary>

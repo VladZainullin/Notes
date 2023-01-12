@@ -13,7 +13,7 @@ public sealed class Reminder
     /// <summary>
     ///     Дата включения
     /// </summary>
-    public DateTime DateOfInclusion { get; set; }
+    public TimeOnly TimeOfInclusion { get; set; }
 
     /// <summary>
     ///     Id заметки

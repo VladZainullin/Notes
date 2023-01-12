@@ -108,4 +108,13 @@ public sealed class AppDbContext : DbContext
     public DbSet<LabelHistory> LabelHistories { get; set; } = null!;
 
     #endregion
+    
+    #region Reminders
+
+    /// <summary>
+    ///     Напоминания
+    /// </summary>
+    public DbSet<Reminder> Reminders { get; set; } = null!;
+
+    #endregion
 }

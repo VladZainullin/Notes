@@ -4,12 +4,12 @@
         <name>Notes.Web</name>
     </assembly>
     <members>
-        <member name="T:Notes.Web.Controllers.Controller">
+        <member name="T:Notes.Web.Controllers.ApiControllerBase">
             <summary>
                 Базовый контроллер проекта
             </summary>
         </member>
-        <member name="P:Notes.Web.Controllers.Controller.Mediator">
+        <member name="P:Notes.Web.Controllers.ApiControllerBase.Mediator">
             <summary>
                 Объект вызова обработчиков запроса
             </summary>
