@@ -140,6 +140,11 @@ builder.Services.AddAuthorization(options =>
 
 var app = builder.Build();
 
+app.UseCors(b => b
+    .AllowAnyOrigin()
+    .AllowAnyHeader()
+);
+
 #region Serilog
 
 app.UseSerilogRequestLogging();
