@@ -31,9 +31,8 @@ internal sealed class PinNoteHandler : AsyncRequestHandler<PinNoteCommand>
             throw new BadRequestException("Попытка закрепить несуществующую заметку");
 
         var note = await GetNoteAsync(request.NoteId, cancellationToken);
-
-        var access = note.Id == _currentUserService.Id;
-        if (access)
+        var access = note.UserId == _currentUserService.Id;
+        if (!access)
             throw new ForbiddenException("Заметка принадлежит другому пользователю");
 
         note.IsPinned = true;

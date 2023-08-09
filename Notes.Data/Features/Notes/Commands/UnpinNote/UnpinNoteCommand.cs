@@ -31,7 +31,7 @@ internal sealed class UnpinNoteHandler : AsyncRequestHandler<UnpinNoteCommand>
             throw new BadRequestException("Попытка закрепить несуществующую заметку");
 
         var note = await GetNoteAsync(request.NoteId, cancellationToken);
-        var access = note.Id == _currentUserService.Id;
+        var access = note.UserId == _currentUserService.Id;
         if (!access)
             throw new ForbiddenException("Заметка принадлежит другому пользователю");
 
