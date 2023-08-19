@@ -51,7 +51,7 @@ internal sealed class CreateNoteLabelHandler :
         if (!labelExists)
             throw new BadRequestException("Ярлык не найден!");
 
-        var labelAccess = await GetNoteAccessAsync(
+        var labelAccess = await GetLabelAccessAsync(
             request.LabelId,
             cancellationToken);
         if (!labelAccess)
@@ -80,6 +80,17 @@ internal sealed class CreateNoteLabelHandler :
                 n.UserId == _currentUserService.Id, cancellationToken);
     }
 
+    private async Task<bool> GetLabelAccessAsync(
+        int labelId,
+        CancellationToken cancellationToken)
+    {
+        return await _context.Labels
+            .AnyAsync(n =>
+                n.Id == labelId
+                &&
+                n.UserId == _currentUserService.Id, cancellationToken);
+    }
+    
     private async Task<bool> IsExistsNoteAsync(
         int noteId,
         CancellationToken cancellationToken)
